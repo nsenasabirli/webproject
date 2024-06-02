@@ -337,20 +337,32 @@
                 console.error('Error fetching search results:', error);
             }
         }
-  function toggleFavourite(button) {
-        // Use the button's own 'isFavourite' property to track its state
-        button.isFavourite = !button.isFavourite;
-        
-        if (button.isFavourite) {
-            console.log('Favourited!')
-            button.style.backgroundColor = 'red';
-            button.style.color = 'white';
-        } else {
-            console.log('Unfavourited!')
-            button.style.backgroundColor = 'white';
-            button.style.color = 'black';
-        }
+  async function toggleFavourite(button) {
+    // Use the button's own 'isFavourite' property to track its state
+    button.isFavourite = !button.isFavourite;
+    
+    var item = button.id;  // Assume the button's id is the item to be added/removed
+    var action = button.isFavourite ? 'add' : 'remove';
+  
+    try {
+      const response = await fetch(`favorites.php?item=${encodeURIComponent(item)}&action=${encodeURIComponent(action)}`);
+      const result = await response.text();
+  
+      console.log(result);
+  
+      if (button.isFavourite) {
+        console.log('Favourited!')
+        button.style.backgroundColor = 'red';
+        button.style.color = 'white';
+      } else {
+        console.log('Unfavourited!')
+        button.style.backgroundColor = 'white';
+        button.style.color = 'black';
+      }
+    } catch (error) {
+      console.error('Error updating favorites:', error);
     }
+  }
 </script>
 
     </body>
