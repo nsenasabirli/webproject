@@ -10,9 +10,6 @@
     <title>Fixed top navbar example · Bootstrap v5.3</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-fixed/">
-
-    
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -99,6 +96,7 @@
             border: none;
             cursor: pointer;
             outline: none;
+    }
     </style>
 
     
@@ -193,34 +191,22 @@
     <a class="btn btn-lg btn-primary" href="../components/navbar/" role="button">View navbar docs &raquo;</a>
   </div>
 </main>
-<script src="../assets/dist/js/bootstrap.bundle.min.js">
-async function toggleFavourite(button) {
-    // Use the button's own 'isFavourite' property to track its state
-    button.isFavourite = !button.isFavourite;
-    
-    var item = button.id;  // Assume the button's id is the item to be added/removed
-    var action = button.isFavourite ? 'add' : 'remove';
-  
-    try {
-      const response = await fetch(favorites.php?item=${encodeURIComponent(item)}&action=${encodeURIComponent(action)});
-      const result = await response.text();
-  
-      console.log(result);
-  
-      if (button.isFavourite) {
-        console.log('Favourited!')
-        button.style.backgroundColor = 'red';
-        button.style.color = 'white';
-      } else {
-        console.log('Unfavourited!')
-        button.style.backgroundColor = 'white';
-        button.style.color = 'black';
-      }
-    } catch (error) {
-      console.error('Error updating favorites:', error);
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function toggleFavourite(button) {
+        // Use the button's own 'isFavourite' property to track its state
+        button.isFavourite = !button.isFavourite;
+        
+        if (button.isFavourite) {
+            console.log('Favourited!')
+            button.style.backgroundColor = 'red';
+            button.style.color = 'white';
+        } else {
+            console.log('Unfavourited!')
+            button.style.backgroundColor = 'white';
+            button.style.color = 'black';
+        }
     }
-  }
 </script>
-
     </body>
 </html>
