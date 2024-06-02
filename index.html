@@ -120,6 +120,13 @@
         #results {
             margin-top: 20px;
         }
+
+        .favouriteButton {
+            background: none;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
     </style>
 
     
@@ -132,6 +139,9 @@
         <button onclick="search()">Ara</button>
     </div>
     <div id="results"></div>
+
+    <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
+    <button id="favouriteButton2" onclick="toggleFavourite(this)">&#9829;</button>
 	
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
@@ -302,7 +312,8 @@
 
   <div class="b-example-divider mb-0"></div>
 </main>
-<script src="../assets/dist/js/bootstrap.bundle.min.js">
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script>
 	async function search() {
             const query = document.getElementById('search-bar').value;
             const resultsContainer = document.getElementById('results');
@@ -326,6 +337,20 @@
                 console.error('Error fetching search results:', error);
             }
         }
+  function toggleFavourite(button) {
+        // Use the button's own 'isFavourite' property to track its state
+        button.isFavourite = !button.isFavourite;
+        
+        if (button.isFavourite) {
+            console.log('Favourited!')
+            button.style.backgroundColor = 'red';
+            button.style.color = 'white';
+        } else {
+            console.log('Unfavourited!')
+            button.style.backgroundColor = 'white';
+            button.style.color = 'black';
+        }
+    }
 </script>
 
     </body>
