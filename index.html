@@ -104,6 +104,8 @@
     <link href="navbar-fixed.css" rel="stylesheet">
   </head>
   <body>
+    <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
+    <button id="favouriteButton2" onclick="toggleFavourite(this)">&#9829;</button>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -193,20 +195,32 @@
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  function toggleFavourite(button) {
-        // Use the button's own 'isFavourite' property to track its state
-        button.isFavourite = !button.isFavourite;
-        
-        if (button.isFavourite) {
-            console.log('Favourited!')
-            button.style.backgroundColor = 'red';
-            button.style.color = 'white';
-        } else {
-            console.log('Unfavourited!')
-            button.style.backgroundColor = 'white';
-            button.style.color = 'black';
-        }
+  async function toggleFavourite(button) {
+    // Use the button's own 'isFavourite' property to track its state
+    button.isFavourite = !button.isFavourite;
+    
+    var item = button.id;  // Assume the button's id is the item to be added/removed
+    var action = button.isFavourite ? 'add' : 'remove';
+  
+    try {
+      const response = await fetch(`favorites.php?item=${encodeURIComponent(item)}&action=${encodeURIComponent(action)}`);
+      const result = await response.text();
+  
+      console.log(result);
+  
+      if (button.isFavourite) {
+        console.log('Favourited!')
+        button.style.backgroundColor = 'red';
+        button.style.color = 'white';
+      } else {
+        console.log('Unfavourited!')
+        button.style.backgroundColor = 'white';
+        button.style.color = 'black';
+      }
+    } catch (error) {
+      console.error('Error updating favorites:', error);
     }
+  }
 </script>
     </body>
 </html>
