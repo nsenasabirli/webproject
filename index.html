@@ -1,12 +1,8 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="../assets/js/color-modes.js"></script>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.122.0">
-    <title>WOW</title>
+	<link rel="icon" href="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\wow.png" type="gif/x-icon" />
+    <title>WOW Books</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -122,17 +118,17 @@
             cursor: pointer;
             outline: none;
         }
- /* SLİDER */       
+       /* SLİDER */       
         * {box-sizing: border-box;}
         body {font-family: Verdana, sans-serif;}
         .mySlides {display: none;}
         img {vertical-align: middle;}
 
       .slideshow-container {
-        max-width: 1000px;
+        max-width: 700px;
         position: relative;
         margin: auto;
-}
+		}
 
       .text {
         color: #f2f2f2;
@@ -140,18 +136,18 @@
         padding: 8px 12px;
         position: absolute;
         bottom: 8px;
-        width: 100%;
+        width: 70%;
        text-align: center;
-}
+		}
 
-/* Number text (1/5 etc) */
+      /* Number text (1/5 etc) */
       .numbertext {
         color: #f2f2f2;
-        font-size: 12px;
+        font-size: 10px;
         padding: 8px 12px;
         position: absolute;
         top: 0;
-}
+        }
 
       .dot {
          height: 15px;
@@ -161,28 +157,27 @@
          border-radius: 50%;
          display: inline-block;
          transition: background-color 0.6s ease;
-}
+		 }
 
       .active {
         background-color: #717171;
-}
+		}
 
       .fade {
          animation-name: fade;
         animation-duration: 1.5s;
-}
+		}
 
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+
+	  @keyframes fade {
+	  from {opacity: .4} 
+      to {opacity: 1}
+	  }
 
 /* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .text {font-size: 11px}
-}
- /* SLİDER */  
-
+	  @media only screen and (max-width: 300px) {
+      .text {font-size: 11px}
+	  } 
     </style>
     <!-- Custom styles for this template -->
     <link href="heroes.css" rel="stylesheet">
@@ -212,6 +207,33 @@
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
     </svg>
+	
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+  	<img src ="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\wow.png" width="100px">
+    <a class="navbar-brand" href="#"><b><i>WOW Books</b></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Books</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="#">Electronics</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Games</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Stationary</a>
+		 <li class="nav-item">
+          <a class="nav-link" href="#">Music & Gifts</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
@@ -250,38 +272,35 @@
 
     
 <main>
-  <h1 class="visually-hidden">Heroes examples</h1>
-
-
+  <h1 class="visually-hidden">Books</h1>
   <div class="slideshow-container">
-
     <div class="mySlides fade">
       <div class="numbertext">1 / 5</div>
-      <img src="img1.jpg" style="width:100%">
+      <img src="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\img1.jpg" style="width:100%">
       <div class="text"></div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">2 / 5</div>
-      <img src="img2.jpg" style="width:100%">
+      <img src="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\img2.jpg" style="width:100%">
       <div class="text"></div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">3 / 5</div>
-      <img src="img3.jpg" style="width:100%">
+      <img src="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\img3.jpg" style="width:100%">
       <div class="text"></div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">4 / 5</div>
-      <img src="img4.jpg" style="width:100%">
+      <img src="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\img4.jpg" style="width:100%">
       <div class="text"></div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">5 / 5</div>
-      <img src="img5.jpg" style="width:100%">
+      <img src="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\img5.jpg" style="width:100%">
       <div class="text"></div>
     </div>
     
@@ -295,12 +314,9 @@
       <span class="dot"></span> 
       <span class="dot"></span> 
     </div>
-    
-
-
+	
   <div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="display-5 fw-bold text-body-emphasis">Centered hero</h1>
+    <h1 class="display-5 fw-bold text-body-emphasis"><b>New Releases</b></h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -310,10 +326,8 @@
     </div>
   </div>
 
-  <div class="b-example-divider"></div>
-
   <div class="px-4 pt-5 my-5 text-center border-bottom">
-    <h1 class="display-4 fw-bold text-body-emphasis">Centered screenshot</h1>
+    <h1 class="display-4 fw-bold text-body-emphasis">Bestseller</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
@@ -323,17 +337,13 @@
     </div>
     <div class="overflow-hidden" style="max-height: 30vh;">
       <div class="container px-5">
-        <img src="bootstrap-docs.png" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
       </div>
     </div>
   </div>
 
-  <div class="b-example-divider"></div>
-
   <div class="container col-xxl-8 px-4 py-5">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
       <div class="col-10 col-sm-8 col-lg-6">
-        <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
       </div>
       <div class="col-lg-6">
         <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
@@ -345,8 +355,7 @@
       </div>
     </div>
   </div>
-
-  <div class="b-example-divider"></div>
+  
   <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
       <div class="col-lg-7 text-center text-lg-start">
@@ -376,8 +385,6 @@
     </div>
   </div>
 
-  <div class="b-example-divider"></div>
-
   <div class="container my-5">
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
@@ -389,12 +396,9 @@
         </div>
       </div>
       <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-          <img class="rounded-lg-3" src="bootstrap-docs.png" alt="" width="720">
       </div>
     </div>
   </div>
-
-  <div class="b-example-divider"></div>
 
   <div class="bg-dark text-secondary px-4 py-5 text-center">
     <div class="py-5">
@@ -408,8 +412,6 @@
       </div>
     </div>
   </div>
-
-  <div class="b-example-divider mb-0"></div>
 </main>
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <script>
