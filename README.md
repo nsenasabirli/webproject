@@ -5,5 +5,5 @@
 # directed by
 # Rawan Elshenieky 
 # Sedef Ugurlu
-# Elif Naz Kadayıfcı
+# Elif Naz Kadayıfçı
 # Nahide Sena Sabırlı
