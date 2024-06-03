@@ -1,14 +1,15 @@
 <?php
 $servername = "localhost";
-$username = "root";  // XAMPP'in varsayılan kullanıcı adı
-$password = "";  // XAMPP'in varsayılan şifresi (boş)
-$dbname = "arama_db";
+$username = "root";  
+$password = "";  
+$dbname = "WOW";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
-    die("Bağlantı hatası: " . $conn->connect_error);
+    die("Connected Failed: " . $conn->connect_error);
 }
+echo "Connected successfully";
 
 $search_query = isset($_GET['query']) ? $_GET['query'] : '';
 $sql = "SELECT konu FROM arama_verileri WHERE konu LIKE ?";

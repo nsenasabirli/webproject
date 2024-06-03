@@ -431,10 +431,10 @@
                         resultsContainer.appendChild(resultItem);
                     });
                 } else {
-                    resultsContainer.textContent = 'Sonuç bulunamadı.';
+                    resultsContainer.textContent = 'No results.';
                 }
             } catch (error) {
-                resultsContainer.textContent = 'Bir hata oluştu.';
+                resultsContainer.textContent = 'Something went wrong.';
                 console.error('Error fetching search results:', error);
             }
         }
