@@ -25,6 +25,9 @@
         if (isset($_GET['bookId'])) {
             $bookId = $_GET['bookId'];
 
+            // Assuming username is passed in URL
+            $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+
             $sql = "SELECT * FROM wowbooks WHERE bookId = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $bookId);
@@ -38,6 +41,7 @@
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img src="'.$row["coverImg"].'" class="img-fluid rounded-start" alt="'.$row["title"].'">
+                            <button onclick="goToFav()">Add to Favourites</button>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -81,5 +85,12 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function goToFav(){
+            const username = "<?php echo $user; ?>";
+            const bookId = "<?php echo $bookId; ?>";
+            window.location.href = `R-Favourites.php?username=${username}&bookId=${bookId}`;
+        }
+    </script>
 </body>
 </html>

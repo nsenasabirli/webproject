@@ -29,7 +29,7 @@ if (isset($_GET["username"]) && isset($_GET["pass"])) {
         $stmt->bind_param("ss", $username, $password);
         if ($stmt->execute()) {
             // Redirect to R-index3.php after successful registration
-            header("Location: R-index3.php");
+            header("Location: R-index3.php?username=" . urlencode($username));
             
             exit();
         } else {

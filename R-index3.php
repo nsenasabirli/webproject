@@ -5,18 +5,21 @@ $password = "";
 $dbname = "WOW";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-?>
 
+// Get the username from the URL
+$username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
+
+?>
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="../assets/js/color-modes.js"></script>
-	<link rel="icon" href="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\wow.png" type="gif/x-icon" />
+<head>
+    <script src="../assets/js/color-modes.js"></script>
+    <link rel="icon" href="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\wow.png" type="gif/x-icon" />
     <title>WOW Books</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -224,7 +227,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="R-Books.php">Books</a>
+          <a class="nav-link" href="R-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
           <li class="nav-item">
             <a class="nav-link" href="R-Electronics.php">Electronics</a>
         <li class="nav-item">
@@ -235,7 +238,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 		 <li class="nav-item">
           <a class="nav-link" href="#">Music & Gifts</a>
           <li class="nav-item">
-          <a class="nav-link" href="R-Favourites.php">Favourites</a>
+          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
         </li>
       </ul>
       <div class="search-container">

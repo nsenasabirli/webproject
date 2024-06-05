@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Books</title>
+    <title>Favourites</title>
 </head>
 <body>
     <div class="container mt-5">
@@ -23,14 +23,39 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            // Assume username is passed as a query parameter in the URL
-            $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+            // Get username and bookId from URL
+            $username = $_GET['username'];
+            $bookId = isset($_GET['bookId']) ? $_GET['bookId'] : null;
 
-            $sql = "SELECT coverImg, title, author, bookId FROM wowbooks";
+            if ($bookId) {
+                // Get userId from wowusers table
+                $sql = "SELECT userId FROM wowusers WHERE username = '$username'";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $userId = $row['userId'];
+
+                    // Insert into favourites table
+                    $sql = "INSERT INTO favourites (userId, bookId) VALUES ('$userId', '$bookId')";
+                    if ($conn->query($sql) === TRUE) {
+                        echo "";
+                    } else {
+                        echo "Error: " . $sql . "<br>" . $conn->error;
+                    }
+                } else {
+                    echo "No user found with username '$username'";
+                }
+            }
+
+            // Get favourite books for the user
+            $sql = "SELECT wowbooks.coverImg, wowbooks.title, wowbooks.author FROM favourites 
+                    JOIN wowbooks ON favourites.bookId = wowbooks.bookId 
+                    JOIN wowusers ON favourites.userId = wowusers.userId 
+                    WHERE wowusers.username = '$username'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
-                // output data of each row
                 while($row = $result->fetch_assoc()) {
                     echo '
                     <div class="col-md-3 mb-4">
@@ -39,15 +64,12 @@
                             <div class="card-body">
                                 <h5 class="card-title">'.$row["title"].'</h5>
                                 <p class="card-text">Author: '.$row["author"].'</p>
-                                <a href="R-Favourites.php?username='.$user.'&bookId='.$row["bookId"].'" class="btn btn-primary">Add to Favorites</a>
-                                <a href="R-BookDetails.php?username='.$user.'&bookId='.$row["bookId"].'" class="btn btn-secondary">Show Details</a>
-                                <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
                             </div>
                         </div>
                     </div>';
                 }
             } else {
-                echo "<p>No results found.</p>";
+                echo "<p>No favourites found for user '$username'.</p>";
             }
 
             $conn->close();
