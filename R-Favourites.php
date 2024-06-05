@@ -58,7 +58,7 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo '
-                    <div class="col-md-3 mb-4">
+                    <div style="background: oldlace" class="col-md-3 mb-4">
                         <div class="card" style="width: 18rem;">
                             <img src="'.$row["coverImg"].'" class="card-img-top" alt="'.$row["title"].'">
                             <div class="card-body">

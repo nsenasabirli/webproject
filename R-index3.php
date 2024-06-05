@@ -137,7 +137,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         img {vertical-align: middle;}
 
       .slideshow-container {
-        max-width: 700px;
+        max-width: 1000px;
         position: relative;
         margin: auto;
 		}
@@ -233,10 +233,8 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         <li class="nav-item">
           <a class="nav-link" href="#">Games</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Stationary</a>
 		 <li class="nav-item">
-          <a class="nav-link" href="#">Music & Gifts</a>
+          <a class="nav-link" href="#">Music</a>
           <li class="nav-item">
           <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
         </li>
@@ -285,7 +283,8 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
       </ul>
     </div>
 
-    
+ 
+<div >
 <main>
   <h1 class="visually-hidden">Books</h1>
   <div class="slideshow-container">
@@ -320,6 +319,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
     </div>
     
     </div>
+</div>
     <br>
     
     <div style="text-align:center">

@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Book Details</title>
+
+    <style>
+        p{
+            font-family: monospace;
+            
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
@@ -37,15 +44,13 @@
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 echo '
-                <div class="card mb-3">
+                <div style="background-color: beige;" class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="'.$row["coverImg"].'" class="img-fluid rounded-start" alt="'.$row["title"].'">
-                            <button onclick="goToFav()">Add to Favourites</button>
-                        </div>
+                            <img src="'.$row["coverImg"].'" class="img-fluid rounded-start" alt="'.$row["title"].'">                        </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">'.$row["title"].'</h5>
+                                <h3 style="font-family: cursive" class="card-title">'.$row["title"].'</h3>
                                 <p class="card-text"><strong>Series:</strong> '.$row["series"].'</p>
                                 <p class="card-text"><strong>Author:</strong> '.$row["author"].'</p>
                                 <p class="card-text"><strong>Rating:</strong> '.$row["rating"].'</p>
@@ -53,10 +58,10 @@
                                 <p class="card-text"><strong>Language:</strong> '.$row["language"].'</p>
                                 <p class="card-text"><strong>ISBN:</strong> '.$row["isbn"].'</p>
                                 <p class="card-text"><strong>Genres:</strong> '.$row["genres"].'</p>
+                                <p class="card-text"><strong>Pages:</strong> '.$row["pages"].'</p>
                                 <p class="card-text"><strong>Characters:</strong> '.$row["characters"].'</p>
                                 <p class="card-text"><strong>Format:</strong> '.$row["bookFormat"].'</p>
                                 <p class="card-text"><strong>Edition:</strong> '.$row["edition"].'</p>
-                                <p class="card-text"><strong>Pages:</strong> '.$row["pages"].'</p>
                                 <p class="card-text"><strong>Publisher:</strong> '.$row["publisher"].'</p>
                                 <p class="card-text"><strong>Publish Date:</strong> '.$row["publishDate"].'</p>
                                 <p class="card-text"><strong>First Publish Date:</strong> '.$row["firstPublishDate"].'</p>
@@ -85,12 +90,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function goToFav(){
-            const username = "<?php echo $user; ?>";
-            const bookId = "<?php echo $bookId; ?>";
-            window.location.href = `R-Favourites.php?username=${username}&bookId=${bookId}`;
-        }
-    </script>
 </body>
 </html>
