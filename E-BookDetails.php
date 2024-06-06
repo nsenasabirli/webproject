@@ -11,6 +11,9 @@
             font-family: monospace;
             
         }
+        body{
+            padding-top: 70px;
+        }
     </style>
 </head>
 <body>
@@ -44,11 +47,45 @@
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 echo '
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <div class="container-fluid">
+  	<img src ="wow.png" width="100px">
+    <a class="navbar-brand" href="#"><b><i>WOW Books</b></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="R-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
+          <li class="nav-item">
+            <a class="nav-link" href="R-Electronics.php">Electronics</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Games</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="#">Music</a>
+          <li class="nav-item">
+          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
+        </li>
+      </ul>
+      <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search...">
+        <button onclick="search()">Search</button>
+    </div>
+    <div id="results"></div>
+    </div>
+  </div>
+</nav>
                 <div style="background-color: beige;" class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img src="'.$row["coverImg"].'" class="img-fluid rounded-start" alt="'.$row["title"].'">                        </div>
                         <div class="col-md-8">
+                          <div style="border: 1px solid black; padding: 20px;">
                             <div class="card-body">
                                 <h3 style="font-family: cursive" class="card-title">'.$row["title"].'</h3>
                                 <p class="card-text"><strong>Series:</strong> '.$row["series"].'</p>
@@ -67,7 +104,7 @@
                                 <p class="card-text"><strong>First Publish Date:</strong> '.$row["firstPublishDate"].'</p>
                                 <p class="card-text"><strong>Awards:</strong> '.$row["awards"].'</p>
                                 <p class="card-text"><strong>Number of Ratings:</strong> '.$row["numRatings"].'</p>
-                                <p class="card-text"><strong>Likes Percent:</strong> '.$row["likesPercent"].'</p>
+                                <p class="card-text"><strong>Likes Percent:</strong> '.$row["likedPercent"].'</p>
                                 <p class="card-text"><strong>Setting:</strong> '.$row["setting"].'</p>
                                 <p class="card-text"><strong>BBE Score:</strong> '.$row["bbeScore"].'</p>
                                 <p class="card-text"><strong>BBE Votes:</strong> '.$row["bbeVotes"].'</p>
