@@ -398,32 +398,25 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
   <div class="container my-5">
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
       <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-        <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Border hero with cropped image and shadows</h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Primary</button>
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
+    <h1 class="display-4 fw-bold lh-1 text-body-emphasis">User Reviews</h1>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <div class="user-review">
+            <p><strong>Mark Lawrence says about <i>Watership Down:</i></strong></p>
+            <p>I read this book an age ago. Maybe 40 years ago the first time.</p>
+            <p>Lots of authors have written animal stories but they tend to be cute little tales where the level of anthropomorphism is such that the rabbits or whatever are practically, or literally, wearing waistcoats and top hats. We only need to look to Wind in the Willows or Beatrix Potter for examples.</p><br>
+			<p>“But people will do anything rather than admit that their lives have no meaning. No use, that is. No plot.”
+<i>― Margaret Atwood, The Handmaid’s Tale</i></p>
+<p>"Ponyboy? Who?
+One thing that you can believe is, when your elders say that you don’t stay the same, they are correct." <i> ― S.E. Hinton, The Outsiders</i></p>
         </div>
-      </div>
-      <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-      </div>
+    </div>
+</div>
+	<div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+        <div style="padding-top:73.146%;position:relative;"><iframe src="https://gifer.com/embed/jVo" width="100%" height="100%" style='position:absolute;top:0;left:0;' frameBorder="0" allowFullScreen></iframe></div><p><a href="https://gifer.com">via GIFER</a></p>
+		<iframe src="https://gifer.com/embed/VMzK" width=480 height=240.960 frameBorder="0" allowFullScreen></iframe><p><a href="https://gifer.com">via GIFER</a></p>
+    </div>
     </div>
   </div>
-
-  <div class="bg-dark text-secondary px-4 py-5 text-center">
-    <div class="py-5">
-      <h1 class="display-5 fw-bold text-white">Dark color hero</h1>
-      <div class="col-lg-6 mx-auto">
-        <p class="fs-5 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <button type="button" class="btn btn-outline-info btn-lg px-4 me-sm-3 fw-bold">Custom button</button>
-          <button type="button" class="btn btn-outline-light btn-lg px-4">Secondary</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 	async function search() {
             const query = document.getElementById('search-bar').value;
