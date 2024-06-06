@@ -412,8 +412,8 @@ One thing that you can believe is, when your elders say that you don’t stay th
     </div>
 </div>
 	<div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-        <div style="padding-top:73.146%;position:relative;"><iframe src="https://gifer.com/embed/jVo" width="100%" height="100%" style='position:absolute;top:0;left:0;' frameBorder="0" allowFullScreen></iframe></div><p><a href="https://gifer.com">via GIFER</a></p>
-		<iframe src="https://gifer.com/embed/VMzK" width=480 height=240.960 frameBorder="0" allowFullScreen></iframe><p><a href="https://gifer.com">via GIFER</a></p>
+        <div style="padding-top:73.146%;position:relative;"><iframe src="https://gifer.com/embed/jVo" width="100%" height="100%" style='position:absolute;top:0;left:0;' frameBorder="0" allowFullScreen></iframe></div><p><a href="https://gifer.com"></a></p>
+		<iframe src="https://gifer.com/embed/VMzK" width=480 height=240.960 frameBorder="0" allowFullScreen></iframe><p><a href="https://gifer.com"></a></p>
     </div>
     </div>
   </div>
