@@ -333,10 +333,10 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
   <div class="px-4 py-5 my-5 text-center">
     <h1 class="display-5 fw-bold text-body-emphasis"><b>New Releases</b></h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+      <p class="lead mb-4">One of the significant trends in new releases is the rising prominence of local authors gaining international acclaim, bringing unique stories to a global audience.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Primary button</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">To Kill a Mockingbird</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">The Giving Tree</button>
       </div>
     </div>
   </div>
@@ -344,10 +344,10 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
   <div class="px-4 pt-5 my-5 text-center border-bottom">
     <h1 class="display-4 fw-bold text-body-emphasis">Bestseller</h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+      <p class="lead mb-4">This season's bestsellers encompass a wide range of genres, from gripping thrillers and heartwarming romances to thought-provoking non-fiction and enlightening self-help guides. </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Primary button</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Brave New World</button>
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Harry Potter and the Order of the Phoenix</button>
       </div>
     </div>
     <div class="overflow-hidden" style="max-height: 30vh;">
@@ -361,12 +361,17 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
       <div class="col-10 col-sm-8 col-lg-6">
       </div>
       <div class="col-lg-6">
-        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Responsive left-aligned hero with image</h1>
-        <p class="lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Primary</button>
-          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Default</button>
-        </div>
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><i>Highlighted Authors</i></h1>
+    <div style="display: flex; align-items: center;">
+        <img src="https://icdn.ensonhaber.com/crop/703x0/resimler/diger/kok/2024/04/27/662ca599e5451782__w1200xh1303.jpg" alt="Aldous Huxley" style="width: 300px; height: auto; margin-right: 20px; border: 5px solid white;""><br><br>
+        <p class="lead">Aldous Huxley was an English writer and philosopher best known for his dystopian novel "Brave New World"...</p>
+    </div>
+	<div style="display: flex; align-items: center;">
+	<img src ="https://m.media-amazon.com/images/M/MV5BMTQyODc5Nzc2MF5BMl5BanBnXkFtZTcwNDAwODgxOA@@._V1_.jpg" style="width: 300px; height: auto; margin-right: 20px; border: 5px solid white;""> 
+	<p class="lead">Suzanne Collins is an American author best known for her dystopian young adult series "The Hunger Games". </p>
+	</div>
+</div>
+
       </div>
     </div>
   </div>
@@ -374,29 +379,19 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
   <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
       <div class="col-lg-7 text-center text-lg-start">
-        <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Vertically centered hero sign-up form</h1>
-        <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+        <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Award-Winning Books</h1>
+        <p class="col-lg-10 fs-4">"Award-Winning Books" showcases some of the finest literary works in the world. These include winners of prestigious awards such as the Pulitzer Prize, Man Booker Prize, Nobel Prize, and more.</p>
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
-        <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
-          <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-          </div>
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me"> Remember me
-            </label>
-          </div>
-          <button class="w-100 btn btn-lg btn-primary" type="submit">Sign up</button>
-          <hr class="my-4">
-          <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
-        </form>
-      </div>
+		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
+		<img src="https://m.media-amazon.com/images/I/61z7RDG3OIL._AC_UF894,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2">
+		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
+		<img src="https://m.media-amazon.com/images/I/71RVt35ZAbL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2">
+		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
+		<img src="https://m.media-amazon.com/images/I/61IvEGeD5bL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2">
+		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
+		<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1578028274i/38447.jpg	 " alt="Image" width="100" height="150" class="me-2">  
+	  </div>
     </div>
   </div>
 
