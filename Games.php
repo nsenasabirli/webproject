@@ -128,7 +128,7 @@
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
     </svg>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md fixed-top">
   <div class="container-fluid">
   	<img src ="wow.png" width="100px">
     <a class="navbar-brand" href="#"><b><i>WOW Books</b></i></a>
@@ -227,8 +227,10 @@
                                 <h5 class="card-title">'.$row["names"].'</h5>
                                 <p class="card-text">Age: '.$row["age"].'</p>
                                 <p class="card-text">Category: '.$row["category"].'</p>
+                                <div class="d-flex">
                                 <a href="#" class="btn btn-primary">Add to Favorites</a>
                                 <a href="GameDetails.php?username='.$user.'&game_id='.$row["game_id"].'" class="btn btn-secondary">Show Details</a>
+                                </div>
                             </div>
                         </div>
                     </div>';
