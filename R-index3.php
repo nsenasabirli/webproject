@@ -276,31 +276,31 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
   <div class="slideshow-container">
     <div class="mySlides fade">
       <div class="numbertext">1 / 5</div>
-      <img src="img1.jpg" style="width:100%">
+      <img src="img1.jpg" style="width:100%; height:500px">
       <div class="text"></div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">2 / 5</div>
-      <img src="img2.jpg" style="width:100%">
+      <img src="img2.jpg" style="width:100%; height:500px">
       <div class="text"></div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">3 / 5</div>
-      <img src="img3.jpg" style="width:100%">
+      <img src="img3.jpg" style="width:100%; height:500px">
       <div class="text"></div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">4 / 5</div>
-      <img src="img4.jpg" style="width:100%">
+      <img src="img4.jpg" style="width:100%; height:500px">
       <div class="text"></div>
     </div>
     
     <div class="mySlides fade">
       <div class="numbertext">5 / 5</div>
-      <img src="img5.jpg" style="width:100%">
+      <img src="img5.jpg" style="width:100%; height:500px">
       <div class="text"></div>
     </div>
     
