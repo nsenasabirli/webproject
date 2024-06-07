@@ -347,20 +347,35 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
       <div class="col-10 col-sm-8 col-lg-6">
       </div>
       <div class="col-lg-6">
+    <div class="col-lg-6">
+    <div class="col-lg-6">
+    <div class="col-lg-6">
+    <div class="col-lg-6">
     <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><i>Highlighted Authors</i></h1>
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-    <div style="display: flex; align-items: center; margin-right: 20px; flex: 1;">
-        <img src="https://icdn.ensonhaber.com/crop/703x0/resimler/diger/kok/2024/04/27/662ca599e5451782__w1200xh1303.jpg" alt="Aldous Huxley" style="width: 330px; height: auto; margin-right: 20px; border: 5px solid white;">
-        <div style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
-            <p class="lead">Aldous Huxley was an English writer and philosopher best known for his dystopian novel "Brave New World"...</p>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+        <div style="display: flex; align-items: flex-start; margin-right: 20px; flex: 1;">
+            <img src="https://icdn.ensonhaber.com/crop/703x0/resimler/diger/kok/2024/04/27/662ca599e5451782__w1200xh1303.jpg" alt="Aldous Huxley" style="width: 330px; height: auto; margin-right: 20px; border: 5px solid white;">
+            <div style="width: 150px; height: 360px; display: flex; align-items: center; justify-content: center; border: 2px solid white; padding: 10px; box-sizing: border-box;">
+                <p class="lead" style="text-align: center; font-family: Arial;">Aldous Huxley was an English writer and philosopher best known for his dystopian novel "Brave New World"...</p>
+            </div>
+        </div>
+        <div style="display: flex; align-items: flex-start; flex: 1;">
+            <img src="https://m.media-amazon.com/images/M/MV5BMTQyODc5Nzc2MF5BMl5BanBnXkFtZTcwNDAwODgxOA@@._V1_.jpg" style="width: 310px; height: auto; margin-right: 20px; border: 5px solid white;">
+            <div style="width: 150px; height: 360px; display: flex; align-items: center; justify-content: center; border: 2px solid white; padding: 10px; box-sizing: border-box;">
+                <p class="lead" style="text-align: center; font-family: Arial;">Suzanne Collins is an American author best known for her dystopian young adult series "The Hunger Games".</p>
+            </div>
         </div>
     </div>
-    <div style="display: flex; align-items: center; flex: 1;">
-        <img src="https://m.media-amazon.com/images/M/MV5BMTQyODc5Nzc2MF5BMl5BanBnXkFtZTcwNDAwODgxOA@@._V1_.jpg" style="width: 300px; height: auto; margin-right: 20px; border: 5px solid white;">
-        <div style="display: flex; flex-direction: column; justify-content: height: 100%;">
-            <p class="lead">Suzanne Collins is an American author best known for her dystopian young adult series "The Hunger Games".</p>
-        </div>
-    </div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 </div>
