@@ -216,7 +216,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="R-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
+          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
           <li class="nav-item">
             <a class="nav-link" href="R-Electronics.php">Electronics</a>
         <li class="nav-item">
