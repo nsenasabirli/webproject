@@ -203,7 +203,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
     </svg>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
   	<img src ="wow.png" width="100px">
     <a class="navbar-brand" href="#"><b><i>WOW Books</b></i></a>
@@ -213,17 +213,17 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
         </li>
 		<li class="nav-item">
           <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
           <li class="nav-item">
-            <a class="nav-link" href="R-Electronics.php">Electronics</a>
+            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
         <li class="nav-item">
-          <a class="nav-link" href="#">Games</a>
+          <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="#">Music</a>
+          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
           <li class="nav-item">
           <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
         </li>
@@ -321,8 +321,11 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">One of the significant trends in new releases is the rising prominence of local authors gaining international acclaim, bringing unique stories to a global audience.</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">To Kill a Mockingbird</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">The Giving Tree</button>
+      <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=2657.To_Kill_a_Mockingbird";?>">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">To Kill a Mockingbird</button></a>
+
+        <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=370493.The_Giving_Tree";?>">
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">The Giving Tree</button></a>
       </div>
     </div>
   </div>
@@ -332,8 +335,11 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">This season's bestsellers encompass a wide range of genres, from gripping thrillers and heartwarming romances to thought-provoking non-fiction and enlightening self-help guides. </p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Brave New World</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Harry Potter and the Order of the Phoenix</button>
+        <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=5129.Brave_New_World";?>">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" >Brave New World</button></a>
+
+        <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=2.Harry_Potter_and_the_Order_of_the_Phoenix";?>">
+        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Harry Potter and the Order of the Phoenix</button></a>
       </div>
     </div>
     <div class="overflow-hidden" style="max-height: 30vh;">
@@ -394,14 +400,22 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         <p class="col-lg-10 fs-4">"Award-Winning Books" showcases some of the finest literary works in the world. These include winners of prestigious awards such as the Pulitzer Prize, Man Booker Prize, Nobel Prize, and more.</p>
       </div>
       <div class="col-md-10 mx-auto col-lg-5">
+      <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=13079982-fahrenheit-451";?>">
+      
 		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
-		<img src="https://m.media-amazon.com/images/I/61z7RDG3OIL._AC_UF894,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2">
+		<img src="https://m.media-amazon.com/images/I/61z7RDG3OIL._AC_UF894,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2"></a>
+
+    <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=3.Harry_Potter_and_the_Sorcerer_s_Stone";?>">
 		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
-		<img src="https://m.media-amazon.com/images/I/71RVt35ZAbL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2">
+		<img src="https://m.media-amazon.com/images/I/71RVt35ZAbL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2"></a>
+    
+    <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=231804.The_Outsiders";?>">
 		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
-		<img src="https://m.media-amazon.com/images/I/61IvEGeD5bL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2">
+		<img src="https://m.media-amazon.com/images/I/61IvEGeD5bL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2"></a>
+
+    <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=38447.The_Handmaid_s_Tale";?>">
 		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
-		<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1578028274i/38447.jpg	 " alt="Image" width="100" height="150" class="me-2">  
+		<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1578028274i/38447.jpg	 " alt="Image" width="100" height="150" class="me-2">  </a>
 	  </div>
     </div>
   </div>
