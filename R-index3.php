@@ -13,6 +13,8 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
 <head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../assets/js/color-modes.js"></script>
     <link rel="icon" href="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\wow.png" type="gif/x-icon" />
     <title>WOW Books</title>
@@ -101,7 +103,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 110px;
         }
 
         .search-container {
@@ -113,8 +115,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
             padding: 10px;
             font-size: 16px;
         }
-
-        button {
+		button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -123,13 +124,6 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         #results {
             margin-top: 20px;
         }
-
-        .favouriteButton {
-            background: none;
-            border: none;
-            cursor: pointer;
-            outline: none;
-        }
        /* SLİDER */       
         * {box-sizing: border-box;}
         body {font-family: Verdana, sans-serif;}
@@ -137,7 +131,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         img {vertical-align: middle;}
 
       .slideshow-container {
-        max-width: 1000px;
+        max-width: 800px;
         position: relative;
         margin: auto;
 		}
@@ -149,7 +143,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         position: absolute;
         bottom: 8px;
         width: 70%;
-       text-align: center;
+        text-align: center;
 		}
 
       /* Number text (1/5 etc) */
@@ -180,13 +174,12 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         animation-duration: 1.5s;
 		}
 
-
 	  @keyframes fade {
 	  from {opacity: .4} 
       to {opacity: 1}
 	  }
 
-/* On smaller screens, decrease text size */
+	  /* On smaller screens, decrease text size */
 	  @media only screen and (max-width: 300px) {
       .text {font-size: 11px}
 	  } 
@@ -195,10 +188,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
     <link href="heroes.css" rel="stylesheet">
   </head>
   <body>
-    <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
-    <button id="favouriteButton2" onclick="toggleFavourite(this)">&#9829;</button>
-	
-    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+	<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
       </symbol>
@@ -213,7 +203,6 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
     </svg>
-	
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
   	<img src ="wow.png" width="100px">
@@ -247,7 +236,6 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
     </div>
   </div>
 </nav>
-
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
@@ -282,8 +270,6 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         </li>
       </ul>
     </div>
-
- 
 <div >
 <main>
   <h1 class="visually-hidden">Books</h1>
@@ -321,7 +307,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
     </div>
 </div>
     <br>
-    
+
     <div style="text-align:center">
       <span class="dot"></span> 
       <span class="dot"></span> 
@@ -362,16 +348,26 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
       </div>
       <div class="col-lg-6">
     <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><i>Highlighted Authors</i></h1>
-    <div style="display: flex; align-items: center;">
-        <img src="https://icdn.ensonhaber.com/crop/703x0/resimler/diger/kok/2024/04/27/662ca599e5451782__w1200xh1303.jpg" alt="Aldous Huxley" style="width: 300px; height: auto; margin-right: 20px; border: 5px solid white;""><br><br>
-        <p class="lead">Aldous Huxley was an English writer and philosopher best known for his dystopian novel "Brave New World"...</p>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; align-items: center; margin-right: 20px; flex: 1;">
+        <img src="https://icdn.ensonhaber.com/crop/703x0/resimler/diger/kok/2024/04/27/662ca599e5451782__w1200xh1303.jpg" alt="Aldous Huxley" style="width: 330px; height: auto; margin-right: 20px; border: 5px solid white;">
+        <div style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+            <p class="lead">Aldous Huxley was an English writer and philosopher best known for his dystopian novel "Brave New World"...</p>
+        </div>
     </div>
-	<div style="display: flex; align-items: center;">
-	<img src ="https://m.media-amazon.com/images/M/MV5BMTQyODc5Nzc2MF5BMl5BanBnXkFtZTcwNDAwODgxOA@@._V1_.jpg" style="width: 300px; height: auto; margin-right: 20px; border: 5px solid white;""> 
-	<p class="lead">Suzanne Collins is an American author best known for her dystopian young adult series "The Hunger Games". </p>
-	</div>
+    <div style="display: flex; align-items: center; flex: 1;">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTQyODc5Nzc2MF5BMl5BanBnXkFtZTcwNDAwODgxOA@@._V1_.jpg" style="width: 300px; height: auto; margin-right: 20px; border: 5px solid white;">
+        <div style="display: flex; flex-direction: column; justify-content: height: 100%;">
+            <p class="lead">Suzanne Collins is an American author best known for her dystopian young adult series "The Hunger Games".</p>
+        </div>
+    </div>
 </div>
 
+</div>
+
+</div>
+
+</div>
       </div>
     </div>
   </div>
@@ -489,6 +485,6 @@ function showSlides() {
 } /* SLİDER */ 
 
 </script>
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
