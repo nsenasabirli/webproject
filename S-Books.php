@@ -6,7 +6,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="../assets/js/color-modes.js"></script>
     <link rel="icon" href="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\wow.png" type="gif/x-icon" />
-    <title>WOW Books</title>
     <title>Books</title>
 	<style>
       .bd-placeholder-img {
