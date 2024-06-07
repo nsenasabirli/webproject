@@ -229,8 +229,11 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         </li>
       </ul>
       <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search...">
-        <button onclick="search()">Search</button>
+        <input type="text" name="query" id="search-bar" placeholder="Search...">
+        <a href="Search.php?username=<?php echo urlencode($username); ?>">
+        <button type="submit">Search</button></a>
+</div>
+
     </div>
     <div id="results"></div>
     </div>
@@ -443,55 +446,55 @@ One thing that you can believe is, when your elders say that you don’t stay th
     </div>
   </div>
 <script>
-	async function search() {
-            const query = document.getElementById('search-bar').value;
-            const resultsContainer = document.getElementById('results');
-            resultsContainer.innerHTML = '';
+	// async function search() {
+  //           const query = document.getElementById('search-bar').value;
+  //           const resultsContainer = document.getElementById('results');
+  //           resultsContainer.innerHTML = '';
 
-            try {
-                const response = await fetch(`search.php?query=${encodeURIComponent(query)}`);
-                const results = await response.json();
+  //           try {
+  //               const response = await fetch(`search.php?query=${encodeURIComponent(query)}`);
+  //               const results = await response.json();
 
-                if (results.length > 0) {
-                    results.forEach(result => {
-                        const resultItem = document.createElement('div');
-                        resultItem.textContent = result;
-                        resultsContainer.appendChild(resultItem);
-                    });
-                } else {
-                    resultsContainer.textContent = 'No results.';
-                }
-            } catch (error) {
-                resultsContainer.textContent = 'Something went wrong.';
-                console.error('Error fetching search results:', error);
-            }
-        }
-  async function toggleFavourite(button) {
-    // Use the button's own 'isFavourite' property to track its state
-    button.isFavourite = !button.isFavourite;
+  //               if (results.length > 0) {
+  //                   results.forEach(result => {
+  //                       const resultItem = document.createElement('div');
+  //                       resultItem.textContent = result;
+  //                       resultsContainer.appendChild(resultItem);
+  //                   });
+  //               } else {
+  //                   resultsContainer.textContent = 'No results.';
+  //               }
+  //           } catch (error) {
+  //               resultsContainer.textContent = 'Something went wrong.';
+  //               console.error('Error fetching search results:', error);
+  //           }
+  //       }
+  // async function toggleFavourite(button) {
+  //   // Use the button's own 'isFavourite' property to track its state
+  //   button.isFavourite = !button.isFavourite;
     
-    var item = button.id;  // Assume the button's id is the item to be added/removed
-    var action = button.isFavourite ? 'add' : 'remove';
+  //   var item = button.id;  // Assume the button's id is the item to be added/removed
+  //   var action = button.isFavourite ? 'add' : 'remove';
   
-    try {
-      const response = await fetch(`favorites.php?item=${encodeURIComponent(item)}&action=${encodeURIComponent(action)}`);
-      const result = await response.text();
+  //   try {
+  //     const response = await fetch(`favorites.php?item=${encodeURIComponent(item)}&action=${encodeURIComponent(action)}`);
+  //     const result = await response.text();
   
-      console.log(result);
+  //     console.log(result);
   
-      if (button.isFavourite) {
-        console.log('Favourited!')
-        button.style.backgroundColor = 'red';
-        button.style.color = 'white';
-      } else {
-        console.log('Unfavourited!')
-        button.style.backgroundColor = 'white';
-        button.style.color = 'black';
-      }
-    } catch (error) {
-      console.error('Error updating favorites:', error);
-    }
-  }
+  //     if (button.isFavourite) {
+  //       console.log('Favourited!')
+  //       button.style.backgroundColor = 'red';
+  //       button.style.color = 'white';
+  //     } else {
+  //       console.log('Unfavourited!')
+  //       button.style.backgroundColor = 'white';
+  //       button.style.color = 'black';
+  //     }
+  //   } catch (error) {
+  //     console.error('Error updating favorites:', error);
+  //   }
+  // }
     /* SLİDER */   
 let slideIndex = 0;
 showSlides();
