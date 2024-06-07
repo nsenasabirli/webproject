@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="../assets/js/color-modes.js"></script>
-    <link rel="icon" href="C:/xampp/htdocs/Class/web/bootstrap-5.3.3-examples/heroes/wow.png" type="gif/x-icon" />
-    <title>Electronics</title>
-</head>
-<style>
+    <link rel="icon" href="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\wow.png" type="gif/x-icon" />
+    <title>Music Details</title>
+
+    <style>
+        p{
+            font-family: monospace;
+            
+        }
+        body{
+            padding-top: 70px;
+        }
 		.bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -109,7 +116,7 @@
         #results {
             margin-top: 20px;
         }
-</style>
+    </style>
 	<link href="heroes.css" rel="stylesheet">
 </head>
 <body>
@@ -128,7 +135,7 @@
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
     </svg>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
   	<img src ="wow.png" width="100px">
     <a class="navbar-brand" href="#"><b><i>WOW Books</b></i></a>
@@ -138,14 +145,14 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
+        <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
         </li>
 		<li class="nav-item">
           <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
           <li class="nav-item">
-            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
+          <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
         <li class="nav-item">
-          <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
+        <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
         </li>
 		 <li class="nav-item">
           <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
@@ -197,50 +204,62 @@
     </div>
 
     <div class="container mt-5">
-        <div class="row">
-            <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "WOW";
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "WOW";
 
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-            $sql = "SELECT electronicId, img_link, name, storage FROM wowlaptops";
-            $result = $conn->query($sql);
+        if (isset($_GET['musicId'])) {
+            $musicId = $_GET['musicId'];
+
+            // Assuming username is passed in URL
+            $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+
+            $sql = "SELECT * FROM wowmusic WHERE musicId = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $musicId);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                    echo '
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'">
+                $row = $result->fetch_assoc();
+                echo '
+                <div style="background-color: beige;" class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                          <div style="border: 1px solid black; padding: 20px;">
                             <div class="card-body">
-                                <h5 class="card-title">'.$row["name"].'</h5>
-                                <p class="card-text">Storage: '.$row["storage"].'</p>
-                                <a href="#" class="btn btn-primary">Add to Favorites</a>
-                                <a href="R-ElectronicDetails.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-secondary">Show Details</a>
-                                <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
+                                <h3 style="font-family: cursive" class="card-title">'.$row["track_name"].'</h3>
+                                <p class="card-text"><strong>Artist: </strong> '.$row["artist_name"].'</p>
+                                <p class="card-text"><strong>Release Date: </strong> '.$row["release_date"].'</p>
+                                <p class="card-text"><strong>Genre: </strong> '.$row["genre"].'</p>
+                                <p class="card-text"><strong>Music Mood:</strong> '.$row["topic"].'</p>
+                                <p class="card-text"><strong>Lyrics :</strong> '.$row["lyrics"].'</p>
                             </div>
                         </div>
-                    </div>';
-                }
+                    </div>
+                </div>';
             } else {
-                echo "<p>No results found.</p>";
+                echo "<p>Game details not found.</p>";
             }
 
-            $conn->close();
-            ?>
-        </div>
-    </div>
+            $stmt->close();
+        } else {
+            echo "<p>No Game ID provided.</p>";
+        }
 
+        $conn->close();
+        ?>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
 	async function search() {

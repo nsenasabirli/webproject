@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="../assets/js/color-modes.js"></script>
     <link rel="icon" href="C:/xampp/htdocs/Class/web/bootstrap-5.3.3-examples/heroes/wow.png" type="gif/x-icon" />
-    <title>Electronics</title>
+    <title>Games</title>
 </head>
 <style>
 		.bd-placeholder-img {
@@ -148,7 +148,7 @@
           <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
+         <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
           <li class="nav-item">
           <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
         </li>
@@ -212,25 +212,22 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT electronicId, img_link, name, storage FROM wowlaptops";
+            $sql = "SELECT * FROM wowmusic";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
                     echo '
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'">
-                            <div class="card-body">
-                                <h5 class="card-title">'.$row["name"].'</h5>
-                                <p class="card-text">Storage: '.$row["storage"].'</p>
-                                <a href="#" class="btn btn-primary">Add to Favorites</a>
-                                <a href="R-ElectronicDetails.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-secondary">Show Details</a>
-                                <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
-                            </div>
-                        </div>
-                    </div>';
+                    <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">'.$row["track_name"].'</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">'.$row["artist_name"].'</h6>
+                      <p class="card-text"><strong>Release Date:</strong> '.$row["release_date"].'</p>
+                      <a href="#" class="btn btn-primary">Add to Favorites</a>
+                      <a href="MusicDetails.php?username='.$user.'&musicId='.$row["musicId"].'" class="btn btn-secondary">Show Details</a>
+                    </div>
+                  </div>';
                 }
             } else {
                 echo "<p>No results found.</p>";

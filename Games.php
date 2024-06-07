@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="../assets/js/color-modes.js"></script>
     <link rel="icon" href="C:/xampp/htdocs/Class/web/bootstrap-5.3.3-examples/heroes/wow.png" type="gif/x-icon" />
-    <title>Electronics</title>
+    <title>Games</title>
 </head>
 <style>
 		.bd-placeholder-img {
@@ -148,7 +148,7 @@
           <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
+         <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
           <li class="nav-item">
           <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
         </li>
@@ -212,7 +212,7 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT electronicId, img_link, name, storage FROM wowlaptops";
+            $sql = "SELECT * FROM wowgames";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -221,13 +221,13 @@
                     echo '
                     <div class="col-md-3 mb-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'">
+                            <img src="'.$row["image_url"].'" class="card-img-top" alt="'.$row["names"].'">
                             <div class="card-body">
-                                <h5 class="card-title">'.$row["name"].'</h5>
-                                <p class="card-text">Storage: '.$row["storage"].'</p>
+                                <h5 class="card-title">'.$row["names"].'</h5>
+                                <p class="card-text">Age: '.$row["age"].'</p>
+                                <p class="card-text">Category: '.$row["category"].'</p>
                                 <a href="#" class="btn btn-primary">Add to Favorites</a>
-                                <a href="R-ElectronicDetails.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-secondary">Show Details</a>
-                                <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
+                                <a href="GameDetails.php?username='.$user.'&game_id='.$row["game_id"].'" class="btn btn-secondary">Show Details</a>
                             </div>
                         </div>
                     </div>';

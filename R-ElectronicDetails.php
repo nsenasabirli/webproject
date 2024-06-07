@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="../assets/js/color-modes.js"></script>
-    <link rel="icon" href="C:/xampp/htdocs/Class/web/bootstrap-5.3.3-examples/heroes/wow.png" type="gif/x-icon" />
-    <title>Electronics</title>
-</head>
-<style>
+    <link rel="icon" href="C:\xampp\htdocs\Class\web\bootstrap-5.3.3-examples\heroes\wow.png" type="gif/x-icon" />
+    <title>Electronics Details</title>
+
+    <style>
+        p{
+            font-family: monospace;
+            
+        }
+        body{
+            padding-top: 70px;
+        }
 		.bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -109,7 +116,7 @@
         #results {
             margin-top: 20px;
         }
-</style>
+    </style>
 	<link href="heroes.css" rel="stylesheet">
 </head>
 <body>
@@ -148,7 +155,7 @@
           <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
+         <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
           <li class="nav-item">
           <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
         </li>
@@ -197,50 +204,65 @@
     </div>
 
     <div class="container mt-5">
-        <div class="row">
-            <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "WOW";
+        <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "WOW";
 
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-            $sql = "SELECT electronicId, img_link, name, storage FROM wowlaptops";
-            $result = $conn->query($sql);
+        if (isset($_GET['electronicId'])) {
+            $electronicId = $_GET['electronicId'];
+
+            // Assuming username is passed in URL
+            $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+
+            $sql = "SELECT * FROM wowlaptops WHERE electronicId = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $electronicId);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
             if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                    echo '
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'">
+                $row = $result->fetch_assoc();
+                echo '
+                <div style="background-color: beige;" class="card mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="'.$row["img_link"].'" class="img-fluid rounded-start" alt="'.$row["name"].'">                        </div>
+                        <div class="col-md-8">
+                          <div style="border: 1px solid black; padding: 20px;">
                             <div class="card-body">
-                                <h5 class="card-title">'.$row["name"].'</h5>
-                                <p class="card-text">Storage: '.$row["storage"].'</p>
-                                <a href="#" class="btn btn-primary">Add to Favorites</a>
-                                <a href="R-ElectronicDetails.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-secondary">Show Details</a>
-                                <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
+                                <h3 style="font-family: cursive" class="card-title">'.$row["name"].'</h3>
+                                <p class="card-text"><strong>Price in R.S:</strong> '.$row["price(in Rs.)"].'</p>
+                                <p class="card-text"><strong>Processor:</strong> '.$row["processor"].'</p>
+                                <p class="card-text"><strong>RAM:</strong> '.$row["ram"].'</p>
+                                <p class="card-text"><strong>Operating System:</strong> '.$row["os"].'</p>
+                                <p class="card-text"><strong>Storage:</strong> '.$row["storage"].'</p>
+                                <p class="card-text"><strong>Display in Inches:</strong> '.$row["display(in inch)"].'</p>
                             </div>
                         </div>
-                    </div>';
-                }
+                    </div>
+                </div>';
             } else {
-                echo "<p>No results found.</p>";
+                echo "<p>Electronic Device details not found.</p>";
             }
 
-            $conn->close();
-            ?>
-        </div>
-    </div>
+            $stmt->close();
+        } else {
+            echo "<p>No Electronic Device ID provided.</p>";
+        }
 
+        $conn->close();
+        ?>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
 	async function search() {
