@@ -135,7 +135,7 @@
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
     </svg>
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
   	<img src ="wow.png" width="100px">
     <a class="navbar-brand" href="#"><b><i>WOW Books</b></i></a>
@@ -145,7 +145,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
         </li>
 		<li class="nav-item">
           <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
@@ -155,7 +155,7 @@
           <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-         <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
+          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
           <li class="nav-item">
           <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
         </li>
@@ -167,6 +167,7 @@
     <div id="results"></div>
     </div>
   </div>
+</nav>>
 </nav>
 <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
@@ -221,6 +222,7 @@
             // Get username and bookId from URL
             $username = $_GET['username'];
             $bookId = isset($_GET['bookId']) ? $_GET['bookId'] : null;
+            $electronicId = isset($_GET['electronicId']) ? $_GET['electronicId'] : null;
 
             if ($bookId) {
                 // Get userId from wowusers table
@@ -232,11 +234,32 @@
                     $userId = $row['userId'];
 
                     // Insert into favourites table
-                    $sql = "INSERT INTO favourites (userId, bookId) VALUES ('$userId', '$bookId')";
+                    $sql = "INSERT INTO favourites (userId, bookId, electronicId) VALUES ('$userId', '$bookId', NULL)";
                     if ($conn->query($sql) === TRUE) {
                         echo "";
                     } else {
                         echo "Error: " . $sql . "<br>" . $conn->error;
+                    }
+                } else {
+                    echo "No user found with username '$username'";
+                }
+            }
+
+            if ($electronicId) {
+                // Get userId from wowusers table
+                $sql = "SELECT userId FROM wowusers WHERE username = '$username'";
+                $result2 = $conn->query($sql2);
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    $userId = $row['userId'];
+
+                    // Insert into favourites table
+                    $sql2 = "INSERT INTO favourites (userId, bookId, electronicId) VALUES ('$userId', NULL, '$electronicId')";
+                    if ($conn->query($sql2) === TRUE) {
+                        echo "";
+                    } else {
+                        echo "Error: " . $sql2 . "<br>" . $conn->error;
                     }
                 } else {
                     echo "No user found with username '$username'";
@@ -265,6 +288,35 @@
                 }
             } else {
                 echo "<p>No favourites found for user '$username'.</p>";
+            }
+
+
+
+
+
+             // Get favourite electronic device for the user
+             $sql2 = "SELECT wowlaptops.img_link, wowlaptops.name, wowlaptops.storage FROM favourites 
+             JOIN wowlaptops ON favourites.electronicId = wowlaptops.electronicId 
+             JOIN wowusers ON favourites.userId = wowusers.userId 
+             WHERE wowusers.username = '$username'";
+            $result2 = $conn->query($sql2);
+
+            if ($result2->num_rows > 0) {
+                while($row = $result2->fetch_assoc()) {
+                    echo '
+                    <div class="col-md-3 mb-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'">
+                        <div class="card-body">
+                            <h5 class="card-title">'.$row["name"].'</h5>
+                            <p class="card-text">Storage: '.$row["storage"].'</p>
+                        </div>
+                    </div>
+                </div>';
+
+                }
+            } else {
+                echo "<p>No electronic favs found for user '$username'.</p>";
             }
 
             $conn->close();

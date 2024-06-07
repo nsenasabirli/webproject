@@ -211,6 +211,9 @@
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
+            // Assume username is passed as a query parameter in the URL
+            $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+
 
             $sql = "SELECT electronicId, img_link, name, storage FROM wowlaptops";
             $result = $conn->query($sql);
@@ -225,9 +228,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">'.$row["name"].'</h5>
                                 <p class="card-text">Storage: '.$row["storage"].'</p>
-                                <a href="#" class="btn btn-primary">Add to Favorites</a>
+                                <a href="R-Favourites.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-primary">Add to Favorites</a>
                                 <a href="R-ElectronicDetails.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-secondary">Show Details</a>
-                                <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
                             </div>
                         </div>
                     </div>';

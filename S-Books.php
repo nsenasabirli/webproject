@@ -236,7 +236,6 @@
                                 <p class="card-text">Author: '.$row["author"].'</p>
                                 <a href="R-Favourites.php?username='.$user.'&bookId='.$row["bookId"].'" class="btn btn-primary">Add to Favorites</a>
                                 <a href="R-BookDetails.php?username='.$user.'&bookId='.$row["bookId"].'" class="btn btn-secondary">Show Details</a>
-                                <button id="favouriteButton1" onclick="toggleFavourite(this)">&#9829;</button>
                             </div>
                         </div>
                     </div>';
