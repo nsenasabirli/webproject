@@ -203,7 +203,7 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
     </svg>
-    <nav class="navbar navbar-expand-md fixed-top">
+<nav class="navbar navbar-expand-md fixed-top">
   <div class="container-fluid">
   	<img src ="wow.png" width="100px">
     <a class="navbar-brand" href="#"><b><i>WOW Books</b></i></a>
@@ -229,11 +229,8 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
         </li>
       </ul>
       <div class="search-container">
-        <input type="text" name="query" id="search-bar" placeholder="Search...">
-        <a href="Search.php?username=<?php echo urlencode($username); ?>">
-        <button type="submit">Search</button></a>
-</div>
-
+        <input type="text" id="search-bar" placeholder="Search...">
+        <button onclick="search()">Search</button>
     </div>
     <div id="results"></div>
     </div>
@@ -398,28 +395,48 @@ $username = isset($_GET['username']) ? $_GET['username'] : 'Guest';
   
   <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
-      <div class="col-lg-7 text-center text-lg-start">
-        <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Award-Winning Books</h1>
-        <p class="col-lg-10 fs-4">"Award-Winning Books" showcases some of the finest literary works in the world. These include winners of prestigious awards such as the Pulitzer Prize, Man Booker Prize, Nobel Prize, and more.</p>
-      </div>
-      <div class="col-md-10 mx-auto col-lg-5">
-      <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=13079982-fahrenheit-451";?>">
-      
-		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
-		<img src="https://m.media-amazon.com/images/I/61z7RDG3OIL._AC_UF894,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2"></a>
+        <!-- Left Column for Text -->
+        <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Award-Winning Books</h1>
+            <p class="col-lg-10 fs-4">"Award-Winning Books" showcases some of the finest literary works in the world. These include winners of prestigious awards such as the Pulitzer Prize, Man Booker Prize, Nobel Prize, and more.</p>
+        </div>
+        <!-- Right Column for Buttons -->
+        <div class="col-lg-5">
+            <div class="row">
+                <div class="col-6 mb-4 d-flex justify-content-center">
+                    <a href="R-BookDetails.php?username=<?php echo $username; echo '&bookId=13079982-fahrenheit-451';?>">
+                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+                            <img src="https://m.media-amazon.com/images/I/61z7RDG3OIL._AC_UF894,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2">
+                        </button>
+                    </a>
+                </div>
+                <div class="col-6 mb-4 d-flex justify-content-center">
+                    <a href="R-BookDetails.php?username=<?php echo $username; echo '&bookId=3.Harry_Potter_and_the_Sorcerer_s_Stone';?>">
+                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+                            <img src="https://m.media-amazon.com/images/I/71RVt35ZAbL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2">
+                        </button>
+                    </a>
+                </div>
+                <div class="col-6 mb-4 d-flex justify-content-center">
+                    <a href="R-BookDetails.php?username=<?php echo $username; echo '&bookId=231804.The_Outsiders';?>">
+                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+                            <img src="https://m.media-amazon.com/images/I/61IvEGeD5bL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2">
+                        </button>
+                    </a>
+                </div>
+                <div class="col-6 mb-4 d-flex justify-content-center">
+                    <a href="R-BookDetails.php?username=<?php echo $username; echo '&bookId=38447.The_Handmaid_s_Tale';?>">
+                        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1578028274i/38447.jpg" alt="Image" width="100" height="150" class="me-2">
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=3.Harry_Potter_and_the_Sorcerer_s_Stone";?>">
-		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
-		<img src="https://m.media-amazon.com/images/I/71RVt35ZAbL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2"></a>
-    
-    <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=231804.The_Outsiders";?>">
-		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
-		<img src="https://m.media-amazon.com/images/I/61IvEGeD5bL._AC_UF1000,1000_QL80_.jpg" alt="Image" width="100" height="150" class="me-2"></a>
 
-    <a href="R-BookDetails.php?username=<?php echo $username; echo "&bookId=38447.The_Handmaid_s_Tale";?>">
-		<button type ="button" class="btn btn-primary btn-lg px-4 gap-3">
-		<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1578028274i/38447.jpg	 " alt="Image" width="100" height="150" class="me-2">  </a>
-	  </div>
     </div>
   </div>
 
@@ -446,55 +463,55 @@ One thing that you can believe is, when your elders say that you don’t stay th
     </div>
   </div>
 <script>
-	// async function search() {
-  //           const query = document.getElementById('search-bar').value;
-  //           const resultsContainer = document.getElementById('results');
-  //           resultsContainer.innerHTML = '';
+	async function search() {
+            const query = document.getElementById('search-bar').value;
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
 
-  //           try {
-  //               const response = await fetch(`search.php?query=${encodeURIComponent(query)}`);
-  //               const results = await response.json();
+            try {
+                const response = await fetch(`search.php?query=${encodeURIComponent(query)}`);
+                const results = await response.json();
 
-  //               if (results.length > 0) {
-  //                   results.forEach(result => {
-  //                       const resultItem = document.createElement('div');
-  //                       resultItem.textContent = result;
-  //                       resultsContainer.appendChild(resultItem);
-  //                   });
-  //               } else {
-  //                   resultsContainer.textContent = 'No results.';
-  //               }
-  //           } catch (error) {
-  //               resultsContainer.textContent = 'Something went wrong.';
-  //               console.error('Error fetching search results:', error);
-  //           }
-  //       }
-  // async function toggleFavourite(button) {
-  //   // Use the button's own 'isFavourite' property to track its state
-  //   button.isFavourite = !button.isFavourite;
+                if (results.length > 0) {
+                    results.forEach(result => {
+                        const resultItem = document.createElement('div');
+                        resultItem.textContent = result;
+                        resultsContainer.appendChild(resultItem);
+                    });
+                } else {
+                    resultsContainer.textContent = 'No results.';
+                }
+            } catch (error) {
+                resultsContainer.textContent = 'Something went wrong.';
+                console.error('Error fetching search results:', error);
+            }
+        }
+  async function toggleFavourite(button) {
+    // Use the button's own 'isFavourite' property to track its state
+    button.isFavourite = !button.isFavourite;
     
-  //   var item = button.id;  // Assume the button's id is the item to be added/removed
-  //   var action = button.isFavourite ? 'add' : 'remove';
+    var item = button.id;  // Assume the button's id is the item to be added/removed
+    var action = button.isFavourite ? 'add' : 'remove';
   
-  //   try {
-  //     const response = await fetch(`favorites.php?item=${encodeURIComponent(item)}&action=${encodeURIComponent(action)}`);
-  //     const result = await response.text();
+    try {
+      const response = await fetch(`favorites.php?item=${encodeURIComponent(item)}&action=${encodeURIComponent(action)}`);
+      const result = await response.text();
   
-  //     console.log(result);
+      console.log(result);
   
-  //     if (button.isFavourite) {
-  //       console.log('Favourited!')
-  //       button.style.backgroundColor = 'red';
-  //       button.style.color = 'white';
-  //     } else {
-  //       console.log('Unfavourited!')
-  //       button.style.backgroundColor = 'white';
-  //       button.style.color = 'black';
-  //     }
-  //   } catch (error) {
-  //     console.error('Error updating favorites:', error);
-  //   }
-  // }
+      if (button.isFavourite) {
+        console.log('Favourited!')
+        button.style.backgroundColor = 'red';
+        button.style.color = 'white';
+      } else {
+        console.log('Unfavourited!')
+        button.style.backgroundColor = 'white';
+        button.style.color = 'black';
+      }
+    } catch (error) {
+      console.error('Error updating favorites:', error);
+    }
+  }
     /* SLİDER */   
 let slideIndex = 0;
 showSlides();

@@ -88,7 +88,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 100px;
+            padding: 120px;
         }
 
         .search-container {
@@ -167,6 +167,7 @@
     </div>
   </div>
 </nav>
+<h1>Our Books Selection</h1>
 <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"

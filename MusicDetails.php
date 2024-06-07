@@ -97,25 +97,6 @@
             margin: 0;
             padding: 100px;
         }
-
-        .search-container {
-            margin-bottom: 20px;
-        }
-
-        #search-bar {
-            width: 300px;
-            padding: 10px;
-            font-size: 16px;
-        }
-		button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        #results {
-            margin-top: 20px;
-        }
     </style>
 	<link href="heroes.css" rel="stylesheet">
 </head>
@@ -160,11 +141,6 @@
           <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
         </li>
       </ul>
-      <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search...">
-        <button onclick="search()">Search</button>
-    </div>
-    <div id="results"></div>
     </div>
   </div>
 </nav>
@@ -261,30 +237,5 @@
         ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
-	async function search() {
-            const query = document.getElementById('search-bar').value;
-            const resultsContainer = document.getElementById('results');
-            resultsContainer.innerHTML = '';
-
-            try {
-                const response = await fetch(`search.php?query=${encodeURIComponent(query)}`);
-                const results = await response.json();
-
-                if (results.length > 0) {
-                    results.forEach(result => {
-                        const resultItem = document.createElement('div');
-                        resultItem.textContent = result;
-                        resultsContainer.appendChild(resultItem);
-                    });
-                } else {
-                    resultsContainer.textContent = 'No results.';
-                }
-            } catch (error) {
-                resultsContainer.textContent = 'Something went wrong.';
-                console.error('Error fetching search results:', error);
-            }
-        }
-	</script>
 </body>
 </html>
