@@ -88,7 +88,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 100px;
+            padding: 120px;
         }
 
         .search-container {
@@ -138,17 +138,17 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
+          <a class="nav-link" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
         </li>
 		<li class="nav-item">
           <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
           <li class="nav-item">
-            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
+            <a class="nav-link active" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
         <li class="nav-item">
           <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
+          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Musics</a>
           <li class="nav-item">
           <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
         </li>
@@ -161,6 +161,7 @@
     </div>
   </div>
 </nav>
+<h1>Electronics for your Life</h1>
 <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
