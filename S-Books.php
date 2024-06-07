@@ -234,8 +234,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">'.$row["title"].'</h5>
                                 <p class="card-text">Author: '.$row["author"].'</p>
-                                <a href="R-Favourites.php?username='.$user.'&bookId='.$row["bookId"].'" class="btn btn-primary">Add to Favorites</a>
-                                <a href="R-BookDetails.php?username='.$user.'&bookId='.$row["bookId"].'" class="btn btn-secondary">Show Details</a>
+                                <div class="d-flex">
+                                  <a href="R-Favourites.php?username='.$user.'&bookId='.$row["bookId"].'" class="btn btn-primary mr-2">Add to Favorites</a>
+                                  <a href="R-BookDetails.php?username='.$user.'&bookId='.$row["bookId"].'" class="btn btn-secondary">Show Details</a>
+                                </div>
                             </div>
                         </div>
                     </div>';
