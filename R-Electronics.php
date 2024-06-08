@@ -1,3 +1,6 @@
+<?php
+$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,9 +109,6 @@
             cursor: pointer;
         }
 
-        #results {
-            margin-top: 20px;
-        }
 </style>
 	<link href="heroes.css" rel="stylesheet">
 </head>
@@ -138,26 +138,29 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
+          <a class="nav-link" aria-current="page" href="R-index3.php?username=<?php echo urlencode($user); ?>">Home</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
+          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($user); ?>">Books</a>
           <li class="nav-item">
-            <a class="nav-link active" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
+            <a class="nav-link active" href="R-Electronics.php?username=<?php echo urlencode($user); ?>">Electronics</a>
         <li class="nav-item">
-          <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
+          <a class="nav-link" href="Games.php?username=<?php echo urlencode($user); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Musics</a>
+          <a class="nav-link" href="Music.php?username=<?php echo urlencode($user); ?>">Music</a>
           <li class="nav-item">
-          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
+          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($user); ?>">Favourites</a>
         </li>
       </ul>
       <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search...">
-        <button onclick="search()">Search</button>
-    </div>
-    <div id="results"></div>
+    <form action="Search.php" method="get">
+        <input type="text" name="query" id="search-bar" placeholder="Search...">
+        <input type="hidden" name="username" value="<?php echo htmlspecialchars($_GET['username']); ?>">
+        <button type="submit">Search</button>
+    </form>
+</div>
+    
     </div>
   </div>
 </nav>
@@ -213,7 +216,7 @@
                 die("Connection failed: " . $conn->connect_error);
             }
             // Assume username is passed as a query parameter in the URL
-            $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+            $username = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
 
 
             $sql = "SELECT electronicId, img_link, name, storage FROM wowlaptops";
@@ -224,14 +227,14 @@
                 while($row = $result->fetch_assoc()) {
                     echo '
                     <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'">
+                        <div class="card" style="width: 300px; height: 420px;">
+                            <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'" style="width: 100%; height: 50%;">
                             <div class="card-body">
                                 <h5 class="card-title">'.$row["name"].'</h5>
                                 <p class="card-text">Storage: '.$row["storage"].'</p>
                                 <div class="d-flex">
-                                <a href="R-Favourites.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-primary">Add to Favorites</a>
-                                <a href="R-ElectronicDetails.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-secondary">Show Details</a>
+                                <a href="R-Favourites.php?username='.urlencode($username).'&electronicId='.$row["electronicId"].'" class="btn btn-primary">Add to Favorites</a>
+                                <a href="R-ElectronicDetails.php?username='.urlencode($username).'&electronicId='.$row["electronicId"].'" class="btn btn-secondary">Show Details</a>
                                 </div>
                             </div>
                         </div>
@@ -247,30 +250,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
-	async function search() {
-            const query = document.getElementById('search-bar').value;
-            const resultsContainer = document.getElementById('results');
-            resultsContainer.innerHTML = '';
 
-            try {
-                const response = await fetch(`search.php?query=${encodeURIComponent(query)}`);
-                const results = await response.json();
-
-                if (results.length > 0) {
-                    results.forEach(result => {
-                        const resultItem = document.createElement('div');
-                        resultItem.textContent = result;
-                        resultsContainer.appendChild(resultItem);
-                    });
-                } else {
-                    resultsContainer.textContent = 'No results.';
-                }
-            } catch (error) {
-                resultsContainer.textContent = 'Something went wrong.';
-                console.error('Error fetching search results:', error);
-            }
-        }
-	</script>
 </body>
 </html>

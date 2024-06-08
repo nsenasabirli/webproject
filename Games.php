@@ -1,3 +1,6 @@
+<?php
+$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -106,9 +109,6 @@
             cursor: pointer;
         }
 
-        #results {
-            margin-top: 20px;
-        }
 </style>
 	<link href="heroes.css" rel="stylesheet">
 </head>
@@ -138,27 +138,28 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
+          <a class="nav-link" aria-current="page" href="R-index3.php?username=<?php echo urlencode($user); ?>">Home</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
+          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($user); ?>">Books</a>
           <li class="nav-item">
-            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
+            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($user); ?>">Electronics</a>
         <li class="nav-item">
-          <a class="nav-link active" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
+          <a class="nav-link active" href="Games.php?username=<?php echo urlencode($user); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-         <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Musics</a>
+         <a class="nav-link" href="Music.php?username=<?php echo urlencode($user); ?>">Music</a>
           <li class="nav-item">
-          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
+          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($user); ?>">Favourites</a>
         </li>
       </ul>
       <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search...">
-        <button onclick="search()">Search</button>
-    </div>
-    <div id="results"></div>
-    </div>
+    <form action="Search.php" method="get">
+        <input type="text" name="query" id="search-bar" placeholder="Search...">
+        <input type="hidden" name="username" value="<?php echo htmlspecialchars($_GET['username']); ?>">
+        <button type="submit">Search</button>
+    </form>
+</div>
   </div>
 </nav>
 <h1>Games for Friends & Family</h1>
@@ -216,19 +217,21 @@
             $sql = "SELECT * FROM wowgames";
             $result = $conn->query($sql);
 
+            //$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+
             if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
                     echo '
                     <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="'.$row["image_url"].'" class="card-img-top" alt="'.$row["names"].'">
+                        <div class="card" style="width: 300px; height: 500px;" >
+                            <img src="'.$row["image_url"].'" class="card-img-top" alt="'.$row["names"].'" style="width: 300px; height: 50%;">
                             <div class="card-body">
                                 <h5 class="card-title">'.$row["names"].'</h5>
                                 <p class="card-text">Age: '.$row["age"].'</p>
                                 <p class="card-text">Category: '.$row["category"].'</p>
                                 <div class="d-flex">
-                                <a href="#" class="btn btn-primary">Add to Favorites</a>
+                                <a href="R-Favourites.php?username='.$user.'&game_id='.$row["game_id"].'" class="btn btn-primary mr-2" class="btn btn-primary">Add to Favorites</a>
                                 <a href="GameDetails.php?username='.$user.'&game_id='.$row["game_id"].'" class="btn btn-secondary">Show Details</a>
                                 </div>
                             </div>

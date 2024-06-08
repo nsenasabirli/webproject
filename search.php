@@ -1,3 +1,6 @@
+<?php
+$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,26 +141,28 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
+          <a class="nav-link" aria-current="page" href="R-index3.php?username=<?php echo urlencode($user); ?>">Home</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
+          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($user); ?>">Books</a>
           <li class="nav-item">
-            <a class="nav-link active" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
+            <a class="nav-link active" href="R-Electronics.php?username=<?php echo urlencode($user); ?>">Electronics</a>
         <li class="nav-item">
-          <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
+          <a class="nav-link" href="Games.php?username=<?php echo urlencode($user); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Musics</a>
+          <a class="nav-link" href="Music.php?username=<?php echo urlencode($user); ?>">Music</a>
           <li class="nav-item">
-          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
+          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($user); ?>">Favourites</a>
         </li>
       </ul>
       <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search...">
-        <button onclick="search()">Search</button>
-    </div>
-    <div id="results"></div>
+    <form action="Search.php" method="get">
+        <input type="text" name="query" id="search-bar" placeholder="Search...">
+        <input type="hidden" name="username" value="<?php echo htmlspecialchars($_GET['username']); ?>">
+        <button type="submit">Search</button>
+    </form>
+</div>
     </div>
   </div>
 </nav>
@@ -196,9 +201,10 @@
         </li>
       </ul>
     </div>
-    </html>
-
-<?php
+    
+    <div class="container mt-5">
+        <div class="row">
+    <?php
 $servername = "localhost";
 $username = "root";  
 $password = "";  
@@ -212,33 +218,124 @@ if ($conn->connect_error) {
 }
 
 $search_query = isset($_GET['query']) ? $_GET['query'] : '';
+$username = isset($_GET['username']) ? $_GET['username'] : '';
+
 $sql = "SELECT * FROM wowbooks WHERE title LIKE ?";
 $stmt = $conn->prepare($sql);
 $search_query = "%" . $search_query . "%";
 $stmt->bind_param("s", $search_query);
 $stmt->execute();
 $result = $stmt->get_result();
-
-while ($row = $result->fetch_assoc()) {
-    echo '
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-    <div class="col-md-3 mb-4">
-        <div class="card" style="width: 18rem;">
-            <img src="'.$row["coverImg"].'" class="card-img-top" alt="'.$row["title"].'">
-            <div class="card-body">
-                <h5 class="card-title">'.$row["title"].'</h5>
-                <p class="card-text">Author: '.$row["author"].'</p>
-                <div class="d-flex">
-                  <a href="R-Favourites.php?username='.$_GET['username'].'&bookId='.$row["bookId"].'" class="btn btn-primary mr-2">Add to Favorites</a>
-                  <a href="R-BookDetails.php?username='.$_GET['username'].'&bookId='.$row["bookId"].'" class="btn btn-secondary">Show Details</a>
+if ($result->num_rows > 0){
+    echo "<h3>Books</h3>";
+    while ($row = $result->fetch_assoc()) {
+        echo '
+        <div class="col-md-3 mb-4">
+            <div class="card" style="width: 300px; height: 600px;">
+                <img src="'.$row["coverImg"].'" class="card-img-top" alt="'.$row["title"].'" style="width: 100%; height: 70%;">
+                <div class="card-body">
+                    <h5 class="card-title">'.$row["title"].'</h5>
+                    <p class="card-text">Author: '.$row["author"].'</p>
+                    <div class="d-flex">
+                      <a href="R-Favourites.php?username='.urlencode($username).'&bookId='.$row["bookId"].'" class="btn btn-primary mr-2">Add to Favorites</a>
+                      <a href="R-BookDetails.php?username='.urlencode($username).'&bookId='.$row["bookId"].'" class="btn btn-secondary">Show Details</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>';
+        </div>';
+    }
 }
+
+
+// $stmt->close();
+$sql2 = "SELECT * FROM wowlaptops WHERE name LIKE ?";
+$stmt = $conn->prepare($sql2);
+$search_query = "%" . $search_query . "%";
+$stmt->bind_param("s", $search_query);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0){
+    echo "<h3>Electronics</h3>";
+    while ($row = $result->fetch_assoc()) {
+        echo '
+        <div class="col-md-3 mb-4">
+        <div class="card" style="width: 300px; height: 420px;">
+        <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'" style="width: 100%; height: 50%;">
+                <div class="card-body">
+                    <h5 class="card-title">'.$row["name"].'</h5>
+                    <p class="card-text">Storage: '.$row["storage"].'</p>
+                    <div class="d-flex">
+                    <a href="R-Favourites.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-primary">Add to Favorites</a>
+                    <a href="R-ElectronicDetails.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-secondary">Show Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>';
+    }
+}
+
+
+
+$sql3 = "SELECT * FROM wowmusic WHERE track_name LIKE ?";
+$stmt = $conn->prepare($sql3);
+$search_query = "%" . $search_query . "%";
+$stmt->bind_param("s", $search_query);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0){
+    echo "<h3>Music</h3>";
+    while ($row = $result->fetch_assoc()) {
+        echo '
+        <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">'.$row["track_name"].'</h5>
+          <h6 class="card-subtitle mb-2 text-muted">'.$row["artist_name"].'</h6>
+          <p class="card-text"><strong>Release Date:</strong> '.$row["release_date"].'</p>
+          <div class="d-flex">
+          <a href="#" class="btn btn-primary">Add to Favorites</a>
+          <a href="MusicDetails.php?username='.$user.'&musicId='.$row["musicId"].'" class="btn btn-secondary">Show Details</a>
+          </div>
+        </div>
+      </div>';
+    }
+}
+
+
+$sql4 = "SELECT * FROM wowgames WHERE names LIKE ?";
+$stmt = $conn->prepare($sql4);
+$search_query = "%" . $search_query . "%";
+$stmt->bind_param("s", $search_query);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result->num_rows > 0){
+    echo "<h3>Games</h3>";
+    while ($row = $result->fetch_assoc()) {
+        echo '
+        <div class="col-md-3 mb-4">
+        <div class="card" style="width: 300px; height: 500px;" >
+            <img src="'.$row["image_url"].'" class="card-img-top" alt="'.$row["names"].'" style="width: 300px; height: 50%;">
+                <div class="card-body">
+                    <h5 class="card-title">'.$row["names"].'</h5>
+                    <p class="card-text">Age: '.$row["age"].'</p>
+                    <p class="card-text">Category: '.$row["category"].'</p>
+                    <div class="d-flex">
+                    <a href="#" class="btn btn-primary">Add to Favorites</a>
+                    <a href="GameDetails.php?username='.$user.'&game_id='.$row["game_id"].'" class="btn btn-secondary">Show Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>';
+    }
+}
+
 
 $stmt->close();
 $conn->close();
 ?>
+
+</div>
+</div>
+
+</html>

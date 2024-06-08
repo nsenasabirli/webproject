@@ -1,3 +1,6 @@
+<?php
+$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,7 +91,7 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 120px;
+            padding: 100px;
         }
 
         .search-container {
@@ -106,9 +109,6 @@
             cursor: pointer;
         }
 
-        #results {
-            margin-top: 20px;
-        }
 
         .favouriteButton {
             background: none;
@@ -144,26 +144,28 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
+          <a class="nav-link " aria-current="page" href="R-index3.php?username=<?php echo urlencode($user); ?>">Home</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="R-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
+          <a class="nav-link active" href="S-Books.php?username=<?php echo urlencode($user); ?>">Books</a>
           <li class="nav-item">
-            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
+            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($user); ?>">Electronics</a>
         <li class="nav-item">
-        <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
+        <a class="nav-link" href="Games.php?username=<?php echo urlencode($user); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
+          <a class="nav-link" href="Music.php?username=<?php echo urlencode($user); ?>">Music</a>
           <li class="nav-item">
-          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
+          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($user); ?>">Favourites</a>
         </li>
       </ul>
       <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search...">
-        <button onclick="search()">Search</button>
-    </div>
-    <div id="results"></div>
+    <form action="Search.php" method="get">
+        <input type="text" name="query" id="search-bar" placeholder="Search...">
+        <input type="hidden" name="username" value="<?php echo htmlspecialchars($_GET['username']); ?>">
+        <button type="submit">Search</button>
+    </form>
+</div>
     </div>
   </div>
 </nav>
@@ -220,7 +222,7 @@
             }
 
             // Assume username is passed as a query parameter in the URL
-            $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+            //$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
 
             $sql = "SELECT coverImg, title, author, bookId FROM wowbooks";
             $result = $conn->query($sql);
@@ -229,9 +231,9 @@
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
                     echo '
-                    <div class="col-md-3 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="'.$row["coverImg"].'" class="card-img-top" alt="'.$row["title"].'">
+                    <div class="col-md-3 mb-4" >
+                        <div class="card" style="width: 300px; height: 600px;">
+                            <img src="'.$row["coverImg"].'" class="card-img-top" alt="'.$row["title"].'" style="width: 100%; height: 70%;">
                             <div class="card-body">
                                 <h5 class="card-title">'.$row["title"].'</h5>
                                 <p class="card-text">Author: '.$row["author"].'</p>

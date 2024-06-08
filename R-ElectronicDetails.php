@@ -1,3 +1,6 @@
+<?php
+$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +100,14 @@
             margin: 0;
             padding: 100px;
         }
+		button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
     </style>
+
 	<link href="heroes.css" rel="stylesheet">
 </head>
 <body>
@@ -126,21 +136,22 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
+          <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($user); ?>">Home</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
+          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($user); ?>">Books</a>
           <li class="nav-item">
-            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
+            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($user); ?>">Electronics</a>
         <li class="nav-item">
-          <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
+          <a class="nav-link" href="Games.php?username=<?php echo urlencode($user); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-         <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
+         <a class="nav-link" href="Music.php?username=<?php echo urlencode($user); ?>">Music</a>
           <li class="nav-item">
-          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
+          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($user); ?>">Favourites</a>
         </li>
       </ul>
+
     </div>
   </div>
 </nav>
@@ -212,7 +223,9 @@
                 <div style="background-color: beige;" class="card mb-3">
                     <div class="row g-0">
                     <div class="col-md-4">
-                       <img src="'.$row["coverImg"].'" class="img-fluid rounded-start" alt="'.$row["title"].'" style="display: block; margin: auto;">
+                       <img src="'.$row["img_link"].'" class="img-fluid rounded-start" alt="'.$row["title"].'" style="display: block; margin: auto;">
+                       <a href="R-Favourites.php?username='.$user.'&electronicId='.$row["electronicId"].'" class="btn btn-primary mr-2" style="display: block; margin: auto; width: 40%">Add to Favourites</a>
+
                       </div>
                         <div class="col-md-8">
                           <div style="border: 1px solid black; padding: 20px;">

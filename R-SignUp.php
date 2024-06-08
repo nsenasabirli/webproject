@@ -36,13 +36,7 @@ if (isset($_GET["username"]) && isset($_GET["pass"])) {
             echo "Error: " . $stmt->error;
         }
     } else {
-        header("Location: R-Login.php");
-        echo '
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-        <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-        <div class="alert alert-primary" role="alert">
-        Username registered before, please Login.
-      </div>';
+        header("Location: Login.html");
     }
     $stmt->close();
 }

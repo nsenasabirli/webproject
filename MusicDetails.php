@@ -220,7 +220,6 @@ $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
                 echo '
                 <div style="background-color: beige;" class="card">
                     <div class="row g-0">
-                        
                           <div style="border: 1px solic black; padding: 20px;">
                             <div style="background-color: beige;" class="card mb-3">
                             <h3 style="font-family: cursive" class="card-title">'.$row["track_name"].'</h3>
@@ -229,7 +228,7 @@ $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
                                 <p class="card-text"><strong>Genre: </strong> '.$row["genre"].'</p>
                                 <p class="card-text"><strong>Music Mood:</strong> '.$row["topic"].'</p>
                                 <p class="card-text"><strong>Lyrics :</strong> '.$row["lyrics"].'</p>
-                                <a href="R-Favourites.php?username='.$user.'&musicId='.$row["musicId"].'" class="btn btn-primary mr-2" style="display: block; margin: auto; width: 40%">Add to Favourites</a>
+                                <a href="R-Favourites.php?username='.$user.'&musicId='.$row["musicId"].'" class="btn btn-primary mr-2" style="display: block; margin: auto; width: 20%">Add to Favourites</a>
 
                             
                         </div>

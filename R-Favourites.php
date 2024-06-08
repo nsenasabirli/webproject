@@ -1,3 +1,6 @@
+<?php
+$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,7 +138,7 @@
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
       </symbol>
     </svg>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md fixed-top">
   <div class="container-fluid">
   	<img src ="wow.png" width="100px">
     <a class="navbar-brand" href="#"><b><i>WOW Books</b></i></a>
@@ -145,30 +148,33 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
+          <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($user); ?>">Home</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
+          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($user); ?>">Books</a>
           <li class="nav-item">
-            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
+            <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($user); ?>">Electronics</a>
         <li class="nav-item">
-          <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
+        <a class="nav-link" href="Games.php?username=<?php echo urlencode($user); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
+          <a class="nav-link" href="Music.php?username=<?php echo urlencode($user); ?>">Music</a>
           <li class="nav-item">
-          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
+          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($user); ?>">Favourites</a>
         </li>
       </ul>
       <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search...">
-        <button onclick="search()">Search</button>
-    </div>
-    <div id="results"></div>
+    <form action="Search.php" method="get">
+        <input type="text" name="query" id="search-bar" placeholder="Search...">
+        <input type="hidden" name="username" value="<?php echo htmlspecialchars($_GET['username']); ?>">
+        <button type="submit">Search</button>
+    </form>
+</div>
     </div>
   </div>
-</nav>>
 </nav>
+
+<h1><br>My Favourites</h1>
 <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
       <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
@@ -181,14 +187,14 @@
       </button>
       <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
         <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+          <button id = "light" type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
             <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
             Light
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
           </button>
         </li>
         <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+          <button id = "dark" type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
             <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
             Dark
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
@@ -221,9 +227,9 @@
 
             // Get username and bookId from URL
             $username = $_GET['username'];
-            $bookId = isset($_GET['bookId']) ? $_GET['bookId'] : null;
-            $electronicId = isset($_GET['electronicId']) ? $_GET['electronicId'] : null;
 
+            $bookId = isset($_GET['bookId']) ? $_GET['bookId'] : null;
+            
             if ($bookId) {
                 // Get userId from wowusers table
                 $sql = "SELECT userId FROM wowusers WHERE username = '$username'";
@@ -245,13 +251,47 @@
                 }
             }
 
+            // Get favourite books for the user
+
+            $sql = "SELECT wowbooks.coverImg, wowbooks.title, wowbooks.author, wowbooks.bookId FROM favourites 
+            JOIN wowbooks ON favourites.bookId = wowbooks.bookId 
+            JOIN wowusers ON favourites.userId = wowusers.userId 
+            WHERE wowusers.username = '$username'";
+            $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo '<h3> Books <br><br> </h3>';
+
+        while($row = $result->fetch_assoc()) {
+            echo '
+            <div style="background: oldlace" class="col-md-3 mb-4">
+            <div class="card" style="width: 300px; height: 600px;">
+            <img src="'.$row["coverImg"].'" class="card-img-top" alt="'.$row["title"].'" style="width: 100%; height: 70%;">
+                    <div class="card-body">
+                        <h5 class="card-title">'.$row["title"].'</h5>
+                        <p class="card-text">Author: '.$row["author"].'</p>
+                        <a href="R-BookDetails.php?username='.$username.'&bookId='.$row["bookId"].'" class="btn btn-primary">Show Details</a>
+                    </div>
+                </div>
+            </div>';
+        }
+    } 
+
+
+
+
+             // Get favourite electronic device for the user
+
+
+            $electronicId = isset($_GET['electronicId']) ? $_GET['electronicId'] : null;
+
             if ($electronicId) {
                 // Get userId from wowusers table
-                $sql = "SELECT userId FROM wowusers WHERE username = '$username'";
+                $sql2 = "SELECT userId FROM wowusers WHERE username = '$username'";
                 $result2 = $conn->query($sql2);
 
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
+                if ($result2->num_rows > 0) {
+                    $row = $result2->fetch_assoc();
                     $userId = $row['userId'];
 
                     // Insert into favourites table
@@ -261,40 +301,9 @@
                     } else {
                         echo "Error: " . $sql2 . "<br>" . $conn->error;
                     }
-                } else {
-                    echo "No user found with username '$username'";
-                }
+                } 
             }
 
-            // Get favourite books for the user
-            $sql = "SELECT wowbooks.coverImg, wowbooks.title, wowbooks.author FROM favourites 
-                    JOIN wowbooks ON favourites.bookId = wowbooks.bookId 
-                    JOIN wowusers ON favourites.userId = wowusers.userId 
-                    WHERE wowusers.username = '$username'";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo '
-                    <div style="background: oldlace" class="col-md-3 mb-4">
-                        <div class="card" style="width: 18rem;">
-                            <img src="'.$row["coverImg"].'" class="card-img-top" alt="'.$row["title"].'">
-                            <div class="card-body">
-                                <h5 class="card-title">'.$row["title"].'</h5>
-                                <p class="card-text">Author: '.$row["author"].'</p>
-                            </div>
-                        </div>
-                    </div>';
-                }
-            } else {
-                echo "<p>No favourites found for user '$username'.</p>";
-            }
-
-
-
-
-
-             // Get favourite electronic device for the user
              $sql2 = "SELECT wowlaptops.img_link, wowlaptops.name, wowlaptops.storage FROM favourites 
              JOIN wowlaptops ON favourites.electronicId = wowlaptops.electronicId 
              JOIN wowusers ON favourites.userId = wowusers.userId 
@@ -302,11 +311,12 @@
             $result2 = $conn->query($sql2);
 
             if ($result2->num_rows > 0) {
+                echo '<h3> Electronics <br><br> </h3>';
                 while($row = $result2->fetch_assoc()) {
                     echo '
                     <div class="col-md-3 mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'">
+                    <div class="card" style="width: 300px; height: 420px;">
+                    <img src="'.$row["img_link"].'" class="card-img-top" alt="'.$row["name"].'" style="width: 100%; height: 50%;">
                         <div class="card-body">
                             <h5 class="card-title">'.$row["name"].'</h5>
                             <p class="card-text">Storage: '.$row["storage"].'</p>
@@ -315,9 +325,102 @@
                 </div>';
 
                 }
-            } else {
-                echo "<p>No electronic favs found for user '$username'.</p>";
+            } 
+
+
+            $musicId = isset($_GET['musicId']) ? $_GET['musicId'] : null;
+
+            if ($musicId) {
+                // Get userId from wowusers table
+                $sql3 = "SELECT userId FROM wowusers WHERE username = '$username'";
+                $result3 = $conn->query($sql3);
+
+                if ($result3->num_rows > 0) {
+                    $row = $result3->fetch_assoc();
+                    $userId = $row['userId'];
+
+                    // Insert into favourites table
+                    $sql3 = "INSERT INTO favourites (userId, bookId, electronicId, musicId) VALUES ('$userId', NULL, NULL, '$musicId')";
+                    if ($conn->query($sql3) === TRUE) {
+                        echo "";
+                    } else {
+                        echo "Error: " . $sql3 . "<br>" . $conn->error;
+                    }
+                } 
             }
+
+             $sql3 = "SELECT wowmusic.release_date, wowmusic.track_name, wowmusic.artist_name FROM favourites 
+             JOIN wowmusic ON favourites.musicId = wowmusic.musicId 
+             JOIN wowusers ON favourites.userId = wowusers.userId 
+             WHERE wowusers.username = '$username'";
+            $result3 = $conn->query($sql3);
+
+            if ($result3->num_rows > 0) {
+                echo '<h3> Music <br><br> </h3>';
+                while($row = $result3->fetch_assoc()) {
+                    echo '
+                    <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">'.$row["track_name"].'</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">'.$row["artist_name"].'</h6>
+                      <p class="card-text"><strong>Release Date:</strong> '.$row["release_date"].'</p>
+                      <div class="d-flex">
+                      <a href="MusicDetails.php?username='.$username.'&musicId='.$row["musicId"].'" class="btn btn-secondary">Show Details</a>
+                      </div>
+                    </div>
+                  </div>';
+
+                }
+            } 
+
+            $game_id = isset($_GET['game_id']) ? $_GET['game_id'] : null;
+
+            if ($game_id) {
+                // Get userId from wowusers table
+                $sql4 = "SELECT userId FROM wowusers WHERE username = '$username'";
+                $result4 = $conn->query($sql4);
+
+                if ($result4->num_rows > 0) {
+                    $row = $result4->fetch_assoc();
+                    $userId = $row['userId'];
+
+                    // Insert into favourites table
+                    $sql4 = "INSERT INTO favourites (userId, bookId, electronicId, musicId, game_id) VALUES ('$userId', NULL, NULL, NULL, '$game_id')";
+                    if ($conn->query($sql4) === TRUE) {
+                        echo "";
+                    } else {
+                        echo "Error: " . $sql4 . "<br>" . $conn->error;
+                    }
+                } 
+            }
+
+             $sql4 = "SELECT wowgames.image_url, wowgames.names, wowgames.age, wowgames.category FROM favourites 
+             JOIN wowgames ON favourites.game_id = wowgames.game_id 
+             JOIN wowusers ON favourites.userId = wowusers.userId 
+             WHERE wowusers.username = '$username'";
+            $result4 = $conn->query($sql4);
+
+            if ($result4->num_rows > 0) {
+                echo '<h3> Games <br><br> </h3>';
+                while($row = $result4->fetch_assoc()) {
+                    echo '
+                    <div class="col-md-3 mb-4">
+                    <div class="card" style="width: 300px; height: 500px;" >
+                    <img src="'.$row["image_url"].'" class="card-img-top" alt="'.$row["names"].'" style="width: 300px; height: 50%;">
+                            
+                            <div class="card-body">
+                                <h5 class="card-title">'.$row["names"].'</h5>
+                                <p class="card-text">Age: '.$row["age"].'</p>
+                                <p class="card-text">Category: '.$row["category"].'</p>
+                                <div class="d-flex">
+                                </div>
+                            </div>
+                        </div>
+                    </div>';
+
+                }
+            } 
+
 
             $conn->close();
             ?>
