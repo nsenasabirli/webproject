@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2024 at 07:28 PM
+-- Generation Time: Jun 08, 2024 at 10:22 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -30,50 +30,133 @@ SET time_zone = "+00:00";
 CREATE TABLE `favourites` (
   `id` int(6) NOT NULL,
   `userId` int(11) DEFAULT NULL,
-  `bookId` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `electronicId` int(11) DEFAULT NULL
+  `bookId` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `electronicId` int(11) DEFAULT NULL,
+  `musicId` int(11) DEFAULT NULL,
+  `game_id` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `favourites`
 --
 
-INSERT INTO `favourites` (`id`, `userId`, `bookId`, `electronicId`) VALUES
-(1, 1, '10210.Jane_Eyre', NULL),
-(2, 1, '11127.The_Chronicles_of_Narnia', NULL),
-(3, 19, '10210.Jane_Eyre', NULL),
-(4, 20, '11870085-the-fault-in-our-stars', NULL),
-(5, 20, '11127.The_Chronicles_of_Narnia', NULL),
-(6, 20, '10210.Jane_Eyre', NULL),
-(7, 21, '11870085-the-fault-in-our-stars', NULL),
-(8, 21, '12232938-the-lovely-bones', NULL),
-(9, 24, '11127.The_Chronicles_of_Narnia', NULL),
-(10, 25, '149267.The_Stand', NULL),
-(11, 25, '11870085-the-fault-in-our-stars', NULL),
-(12, 25, '11870085-the-fault-in-our-stars', NULL),
-(13, 26, '168668.Catch_22', NULL),
-(14, 27, '11870085-the-fault-in-our-stars', NULL),
-(15, 27, '13496.A_Game_of_Thrones', NULL),
-(16, 27, '13079982-fahrenheit-451', NULL),
-(17, 27, '128029.A_Thousand_Splendid_Suns', NULL),
-(18, 27, '149267.The_Stand', NULL),
-(19, 27, '1381.The_Odyssey', NULL),
-(20, 27, '2.Harry_Potter_and_the_Order_of_the_Phoenix', NULL),
-(21, 27, '24178.Charlotte_s_Web', NULL),
-(22, 32, '10210.Jane_Eyre', NULL),
-(23, 32, '10210.Jane_Eyre', NULL),
-(24, 32, '11127.The_Chronicles_of_Narnia', NULL),
-(25, 32, '13079982-fahrenheit-451', NULL),
-(26, 33, '12232938-the-lovely-bones', NULL),
-(27, 34, '11870085-the-fault-in-our-stars', NULL),
-(28, 34, '128029.A_Thousand_Splendid_Suns', NULL),
-(29, 35, '1885.Pride_and_Prejudice', NULL),
-(30, 39, '11127.The_Chronicles_of_Narnia', NULL),
-(31, 40, '1953.A_Tale_of_Two_Cities', NULL),
-(32, 40, '11127.The_Chronicles_of_Narnia', NULL),
-(33, 41, '149267.The_Stand', NULL),
-(34, 41, '11870085-the-fault-in-our-stars', NULL),
-(35, 42, '10210.Jane_Eyre', NULL);
+INSERT INTO `favourites` (`id`, `userId`, `bookId`, `electronicId`, `musicId`, `game_id`) VALUES
+(1, 1, '10210.Jane_Eyre', NULL, NULL, NULL),
+(2, 1, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(3, 19, '10210.Jane_Eyre', NULL, NULL, NULL),
+(4, 20, '11870085-the-fault-in-our-stars', NULL, NULL, NULL),
+(5, 20, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(6, 20, '10210.Jane_Eyre', NULL, NULL, NULL),
+(7, 21, '11870085-the-fault-in-our-stars', NULL, NULL, NULL),
+(8, 21, '12232938-the-lovely-bones', NULL, NULL, NULL),
+(9, 24, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(10, 25, '149267.The_Stand', NULL, NULL, NULL),
+(11, 25, '11870085-the-fault-in-our-stars', NULL, NULL, NULL),
+(12, 25, '11870085-the-fault-in-our-stars', NULL, NULL, NULL),
+(13, 26, '168668.Catch_22', NULL, NULL, NULL),
+(14, 27, '11870085-the-fault-in-our-stars', NULL, NULL, NULL),
+(15, 27, '13496.A_Game_of_Thrones', NULL, NULL, NULL),
+(16, 27, '13079982-fahrenheit-451', NULL, NULL, NULL),
+(17, 27, '128029.A_Thousand_Splendid_Suns', NULL, NULL, NULL),
+(18, 27, '149267.The_Stand', NULL, NULL, NULL),
+(19, 27, '1381.The_Odyssey', NULL, NULL, NULL),
+(20, 27, '2.Harry_Potter_and_the_Order_of_the_Phoenix', NULL, NULL, NULL),
+(21, 27, '24178.Charlotte_s_Web', NULL, NULL, NULL),
+(22, 32, '10210.Jane_Eyre', NULL, NULL, NULL),
+(23, 32, '10210.Jane_Eyre', NULL, NULL, NULL),
+(24, 32, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(25, 32, '13079982-fahrenheit-451', NULL, NULL, NULL),
+(26, 33, '12232938-the-lovely-bones', NULL, NULL, NULL),
+(27, 34, '11870085-the-fault-in-our-stars', NULL, NULL, NULL),
+(28, 34, '128029.A_Thousand_Splendid_Suns', NULL, NULL, NULL),
+(29, 35, '1885.Pride_and_Prejudice', NULL, NULL, NULL),
+(30, 39, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(31, 40, '1953.A_Tale_of_Two_Cities', NULL, NULL, NULL),
+(32, 40, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(33, 41, '149267.The_Stand', NULL, NULL, NULL),
+(34, 41, '11870085-the-fault-in-our-stars', NULL, NULL, NULL),
+(35, 42, '10210.Jane_Eyre', NULL, NULL, NULL),
+(36, 44, '11870085-the-fault-in-our-stars', NULL, NULL, NULL),
+(37, 44, '157993.The_Little_Prince', NULL, NULL, NULL),
+(38, 44, '157993.The_Little_Prince', NULL, NULL, NULL),
+(39, 45, '10210.Jane_Eyre', NULL, NULL, NULL),
+(40, 46, '10210.Jane_Eyre', NULL, NULL, NULL),
+(41, 47, '10210.Jane_Eyre', NULL, NULL, NULL),
+(42, 47, '10210.Jane_Eyre', NULL, NULL, NULL),
+(43, 47, '13079982-fahrenheit-451', NULL, NULL, NULL),
+(44, 47, '10210.Jane_Eyre', NULL, NULL, NULL),
+(45, 47, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(47, 7, '929.Memoirs_of_a_Geisha', 1, NULL, NULL),
+(48, 47, '10210.Jane_Eyre', NULL, NULL, NULL),
+(49, 47, NULL, 2, NULL, NULL),
+(50, 48, NULL, 2, NULL, NULL),
+(51, 48, '10210.Jane_Eyre', NULL, NULL, NULL),
+(52, 48, NULL, 1, NULL, NULL),
+(53, 48, NULL, 9, NULL, NULL),
+(54, 48, NULL, 11, NULL, NULL),
+(55, 48, NULL, 13, NULL, NULL),
+(56, 49, NULL, NULL, 1, NULL),
+(57, 49, '10210.Jane_Eyre', NULL, NULL, NULL),
+(58, 49, NULL, 2, NULL, NULL),
+(59, 50, '10210.Jane_Eyre', NULL, NULL, NULL),
+(60, 50, NULL, 3, NULL, NULL),
+(61, 50, NULL, NULL, 7, NULL),
+(62, 50, NULL, NULL, NULL, 93),
+(63, 50, NULL, NULL, NULL, 12333),
+(64, 50, NULL, NULL, NULL, 42),
+(65, 50, NULL, NULL, NULL, 30549),
+(66, 50, NULL, NULL, 1, NULL),
+(67, 50, NULL, NULL, 19, NULL),
+(68, 50, '10210.Jane_Eyre', NULL, NULL, NULL),
+(69, 50, NULL, 1, NULL, NULL),
+(70, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(71, 50, NULL, NULL, 30, NULL),
+(72, 50, NULL, NULL, 30, NULL),
+(73, 50, NULL, NULL, 30, NULL),
+(74, 50, NULL, NULL, 30, NULL),
+(75, 50, NULL, NULL, 30, NULL),
+(76, 50, NULL, NULL, 30, NULL),
+(77, 50, NULL, NULL, 30, NULL),
+(78, 50, NULL, NULL, 30, NULL),
+(79, 50, NULL, NULL, 30, NULL),
+(80, 50, NULL, NULL, 31, NULL),
+(81, 50, NULL, NULL, 31, NULL),
+(82, 50, '10210.Jane_Eyre', NULL, NULL, NULL),
+(83, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(84, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(85, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(86, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(87, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(88, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(89, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(90, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(91, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(92, 50, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(93, 50, NULL, NULL, NULL, 93),
+(94, 50, '2623.Great_Expectations', NULL, NULL, NULL),
+(95, 50, '2623.Great_Expectations', NULL, NULL, NULL),
+(96, 50, '2623.Great_Expectations', NULL, NULL, NULL),
+(97, 50, '2623.Great_Expectations', NULL, NULL, NULL),
+(98, 51, NULL, NULL, 1, NULL),
+(99, 51, NULL, NULL, NULL, 68448),
+(100, 52, '10210.Jane_Eyre', NULL, NULL, NULL),
+(101, 52, NULL, 3, NULL, NULL),
+(102, 52, NULL, NULL, NULL, 36218),
+(103, 52, NULL, NULL, 52, NULL),
+(104, 52, '13079982-fahrenheit-451', NULL, NULL, NULL),
+(105, 52, '38447.The_Handmaid_s_Tale', NULL, NULL, NULL),
+(106, 52, NULL, NULL, 52, NULL),
+(107, 7, NULL, 2, NULL, NULL),
+(108, 7, NULL, 1, NULL, NULL),
+(109, 7, NULL, 1, NULL, NULL),
+(110, 1, '10210.Jane_Eyre', NULL, NULL, NULL),
+(111, 1, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(112, 1, '11127.The_Chronicles_of_Narnia', NULL, NULL, NULL),
+(113, 1, NULL, 1, NULL, NULL),
+(114, 1, NULL, 1, NULL, NULL),
+(115, 1, NULL, NULL, NULL, 42),
+(116, 1, NULL, NULL, NULL, 93),
+(117, 1, NULL, NULL, NULL, 3076);
 
 -- --------------------------------------------------------
 
@@ -477,7 +560,17 @@ INSERT INTO `wowusers` (`userId`, `username`, `password`) VALUES
 (39, '222', '222'),
 (40, 'test100', '100'),
 (41, 'test101', '101'),
-(42, 'test321', '321');
+(42, 'test321', '321'),
+(43, 'test333', '333'),
+(44, 'test543', '543'),
+(45, 'test21', '21'),
+(46, 'test888', '888'),
+(47, 'test880', '888'),
+(48, 'test1011', '12111'),
+(49, 'test432', '234'),
+(50, 'test323', '323'),
+(51, 'rawan1', '1'),
+(52, 'rawan2', '22');
 
 --
 -- Indexes for dumped tables
@@ -490,7 +583,9 @@ ALTER TABLE `favourites`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Test` (`userId`),
   ADD KEY `Test2` (`bookId`),
-  ADD KEY `Test3` (`electronicId`);
+  ADD KEY `Test3` (`electronicId`),
+  ADD KEY `Test4` (`musicId`),
+  ADD KEY `Test5` (`game_id`);
 
 --
 -- Indexes for table `wowbooks`
@@ -530,7 +625,7 @@ ALTER TABLE `wowusers`
 -- AUTO_INCREMENT for table `favourites`
 --
 ALTER TABLE `favourites`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `wowlaptops`
@@ -548,7 +643,7 @@ ALTER TABLE `wowmusic`
 -- AUTO_INCREMENT for table `wowusers`
 --
 ALTER TABLE `wowusers`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Constraints for dumped tables
@@ -560,7 +655,9 @@ ALTER TABLE `wowusers`
 ALTER TABLE `favourites`
   ADD CONSTRAINT `Test` FOREIGN KEY (`userId`) REFERENCES `wowusers` (`userId`),
   ADD CONSTRAINT `Test2` FOREIGN KEY (`bookId`) REFERENCES `wowbooks` (`bookId`),
-  ADD CONSTRAINT `Test3` FOREIGN KEY (`electronicId`) REFERENCES `wowlaptops` (`electronicId`);
+  ADD CONSTRAINT `Test3` FOREIGN KEY (`electronicId`) REFERENCES `wowlaptops` (`electronicId`),
+  ADD CONSTRAINT `Test4` FOREIGN KEY (`musicId`) REFERENCES `wowmusic` (`musicId`),
+  ADD CONSTRAINT `Test5` FOREIGN KEY (`game_id`) REFERENCES `wowgames` (`game_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
