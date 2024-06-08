@@ -304,7 +304,7 @@ $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
                 } 
             }
 
-             $sql2 = "SELECT wowlaptops.img_link, wowlaptops.name, wowlaptops.storage FROM favourites 
+             $sql2 = "SELECT wowlaptops.img_link, wowlaptops.name, wowlaptops.storage, wowlaptops.electronicId FROM favourites 
              JOIN wowlaptops ON favourites.electronicId = wowlaptops.electronicId 
              JOIN wowusers ON favourites.userId = wowusers.userId 
              WHERE wowusers.username = '$username'";
@@ -320,6 +320,8 @@ $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
                         <div class="card-body">
                             <h5 class="card-title">'.$row["name"].'</h5>
                             <p class="card-text">Storage: '.$row["storage"].'</p>
+                            <a href="R-ElectronicDetails.php?username='.$username.'&electronicId='.$row["electronicId"].'" class="btn btn-primary">Show Details</a>
+
                         </div>
                     </div>
                 </div>';
@@ -349,7 +351,7 @@ $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
                 } 
             }
 
-             $sql3 = "SELECT wowmusic.release_date, wowmusic.track_name, wowmusic.artist_name FROM favourites 
+             $sql3 = "SELECT wowmusic.release_date, wowmusic.track_name, wowmusic.artist_name, wowmusic.musicId FROM favourites 
              JOIN wowmusic ON favourites.musicId = wowmusic.musicId 
              JOIN wowusers ON favourites.userId = wowusers.userId 
              WHERE wowusers.username = '$username'";
@@ -394,7 +396,7 @@ $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
                 } 
             }
 
-             $sql4 = "SELECT wowgames.image_url, wowgames.names, wowgames.age, wowgames.category FROM favourites 
+             $sql4 = "SELECT wowgames.image_url, wowgames.names, wowgames.age, wowgames.category, wowgames.game_id FROM favourites 
              JOIN wowgames ON favourites.game_id = wowgames.game_id 
              JOIN wowusers ON favourites.userId = wowusers.userId 
              WHERE wowusers.username = '$username'";
@@ -412,6 +414,8 @@ $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
                                 <h5 class="card-title">'.$row["names"].'</h5>
                                 <p class="card-text">Age: '.$row["age"].'</p>
                                 <p class="card-text">Category: '.$row["category"].'</p>
+                                <a href="GameDetails.php?username='.$username.'&game_id='.$row["game_id"].'" class="btn btn-secondary">Show Details</a>
+
                                 <div class="d-flex">
                                 </div>
                             </div>
