@@ -1,3 +1,6 @@
+<?php
+$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,6 +100,12 @@
             margin: 0;
             padding: 100px;
         }
+
+		button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 	<link href="heroes.css" rel="stylesheet">
 </head>
@@ -126,19 +135,19 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($username); ?>">Home</a>
+        <a class="nav-link active" aria-current="page" href="R-index3.php?username=<?php echo urlencode($user); ?>">Home</a>
         </li>
 		<li class="nav-item">
-          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($username); ?>">Books</a>
+          <a class="nav-link" href="S-Books.php?username=<?php echo urlencode($user); ?>">Books</a>
           <li class="nav-item">
-          <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($username); ?>">Electronics</a>
+          <a class="nav-link" href="R-Electronics.php?username=<?php echo urlencode($user); ?>">Electronics</a>
         <li class="nav-item">
-        <a class="nav-link" href="Games.php?username=<?php echo urlencode($username); ?>">Games</a>
+        <a class="nav-link" href="Games.php?username=<?php echo urlencode($user); ?>">Games</a>
         </li>
 		 <li class="nav-item">
-          <a class="nav-link" href="Music.php?username=<?php echo urlencode($username); ?>">Music</a>
+          <a class="nav-link" href="Music.php?username=<?php echo urlencode($user); ?>">Music</a>
           <li class="nav-item">
-          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($username); ?>">Favourites</a>
+          <a class="nav-link" href="R-Favourites.php?username=<?php echo urlencode($user); ?>">Favourites</a>
         </li>
       </ul>
     </div>
@@ -198,7 +207,7 @@
             $musicId = $_GET['musicId'];
 
             // Assuming username is passed in URL
-            $user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
+            //$user = isset($_GET['username']) ? $_GET['username'] : 'defaultUser';
 
             $sql = "SELECT * FROM wowmusic WHERE musicId = ?";
             $stmt = $conn->prepare($sql);
@@ -209,18 +218,20 @@
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
                 echo '
-                <div style="background-color: beige;" class="card mb-3">
+                <div style="background-color: beige;" class="card">
                     <div class="row g-0">
-                        <div class="col-md-8">
-                          <div style="border: 1px solid black; padding: 20px;">
-                            <div class="card-body">
-                                <h3 style="font-family: cursive" class="card-title">'.$row["track_name"].'</h3>
+                        
+                          <div style="border: 1px solic black; padding: 20px;">
+                            <div style="background-color: beige;" class="card mb-3">
+                            <h3 style="font-family: cursive" class="card-title">'.$row["track_name"].'</h3>
                                 <p class="card-text"><strong>Artist: </strong> '.$row["artist_name"].'</p>
                                 <p class="card-text"><strong>Release Date: </strong> '.$row["release_date"].'</p>
                                 <p class="card-text"><strong>Genre: </strong> '.$row["genre"].'</p>
                                 <p class="card-text"><strong>Music Mood:</strong> '.$row["topic"].'</p>
                                 <p class="card-text"><strong>Lyrics :</strong> '.$row["lyrics"].'</p>
-                            </div>
+                                <a href="R-Favourites.php?username='.$user.'&musicId='.$row["musicId"].'" class="btn btn-primary mr-2" style="display: block; margin: auto; width: 40%">Add to Favourites</a>
+
+                            
                         </div>
                     </div>
                 </div>';
