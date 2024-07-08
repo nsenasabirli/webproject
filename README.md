@@ -21,6 +21,8 @@
 
 ![image](https://github.com/nsenasabirli/webproject/assets/72200463/e96af7c7-81cf-48dc-a4b9-79f43d6937dd)
 
+![image](https://github.com/nsenasabirli/webproject/assets/72200463/75e7108a-7934-487e-a6d8-c0b33f896d7c)
+
 ![image](https://github.com/nsenasabirli/webproject/assets/72200463/6d7b77c0-f3e0-42ab-9a74-3ad3627e951e)
 
 ![image](https://github.com/nsenasabirli/webproject/assets/72200463/9f9af6ce-339f-44f9-920e-5214a9d12f70)
